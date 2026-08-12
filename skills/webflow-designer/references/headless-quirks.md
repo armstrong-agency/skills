@@ -1,6 +1,8 @@
 # Webflow headless quirks catalogue
 
-> Origin: `pipeline/README.md` § Headless quirks (armstrong-agency-internal/forge), migrated 2026-07-07.
+This file records verified MCP behaviors that are not obvious from tool
+descriptions. Prefer the currently exposed MCP tools and their documentation;
+use these notes to anticipate edge cases and work around known limitations.
 
 
 - `data_variable_tool` aliases (`existing_variable_id`) resolve **only within the same collection** — cross-collection refs fail with "Referenced variable not found". There is also no delete/rename-collection action, so `create_variable_collection` is a one-way door. Consequence: keep base primitives and semantic tokens in one collection (primitives as `Neutral / …` groups). Non-default collections also prefix CSS names (`--_base-colors---neutral--0`); the default collection yields clean `--neutral--0`.
@@ -8,7 +10,7 @@
 - `set_text`/`set_link` actions only work on genuinely text/Link-capable elements. `NavbarLink` (and similar) take their target via `set_settings` key `link` (`static_link` mode `page`).
 - Image elements bind image props via settings key **`assetId`**; alt text via `altText`.
 - `ComponentSlot` can only be created **inside a component definition**, cannot hold default children from the builder, and is filled **per instance** — insert component instances via `data_component_builder > insert_in_slot` (default slot name `Slot`). Wrap slot content in a micro-component (e.g. `Logo - Item`).
-- `element_snapshot_tool` needs a live Designer session — no headless visual verification; defer to Stage 10.
+- `element_snapshot_tool` needs a live Designer session — no headless visual verification; defer to later stages.
 - **The CF base's custom tag styles are rich-text-scoped.** What looks like the `h1`/`h4`/`h5`/`h6` tag style publishes as `.text-rich-text h1` etc.; the bare tag defaults are separate `default-*` styles, and `update_style` by name may hit either. Consequence: bindings applied to the "tag" can silently not affect page headings (invisible until a font change exposes it). Rule: **typography lives on classes** (`hero_heading`, `section_heading`, `heading-style-h*`) — tag styles are a fallback, never the only carrier.
 - Keep single MCP calls modest: very large nested `element_builder` payloads get truncated in transit. A few medium calls beat one giant one.
 - Creating pages early (as drafts) lets nav/footer links bind real page ids from the start — no placeholder-link sweep later.
@@ -19,7 +21,7 @@
 - **`data_element_builder`'s `set_link` with `link_type: "page"` silently writes `{mode: "url", to: "#"}`** — a broken link that only shows up on the published site. Only `url` mode works at creation. Always set page links afterward via `data_element_tool > set_settings` key `link` with `static_link {mode: "page", to: <pageId>}`, and verify with `get_settings` (query-result summaries display page links as `linkType: "none"`, which is normal).
 - **Combo-class name collisions make `set_style` resolution nondeterministic**: two combos named `is-secondary` (ours under `button`, the CF base's under `fs-styleguide_color-sample`) caused some elements to get the wrong chain plus a stray parent class. After creating an `is-*` combo, check whether the base site already has a combo with that name; sweep affected elements by querying for the stray parent class.
 - `curl` the published site and grep for `href="#"`, placeholder copy, and expected markers — cheapest end-to-end verification; the Data API view can look right while the published output is wrong.
-- **Visual verification that actually works headless:** plain `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --screenshot=<out.png> --window-size=1440,2400 --hide-scrollbars <url-or-file://>` — reliable where the agent-browser daemon was not. Use it for the Stage 2c specimen gate and the Stage 6 build→screenshot→adjust loop against the published staging URL. Never build pages blind again.
+- **Visual verification that actually works headless:** plain `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --screenshot=<out.png> --window-size=1440,2400 --hide-scrollbars <url-or-file://>` — reliable where the agent-browser daemon was not. Use it for specimen gates and build→screenshot→adjust loops against the published staging URL. Never build pages blind again.
 
 ## Observed 2026-07-27 — revalidate before use
 

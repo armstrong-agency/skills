@@ -207,6 +207,9 @@ instead of implying it passed.
 
 - `references/figma-to-webflow.md` — Figma, node, or screenshot → Webflow implementation judgment.
 - `references/preview-and-state.md` — Designer Preview, runtime custom behavior, and publication-state evidence.
+- `references/platform-facts.md` — Verified Webflow platform capabilities, Shadow DOM behavior, and Code Component facts.
+- `references/headless-quirks.md` — MCP tool edge cases, workarounds, and time-sensitive observations.
+- `references/roles.md` — Marketer vs Designer authority boundaries and when to switch roles.
 
 ## Handoff
 

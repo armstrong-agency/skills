@@ -1,6 +1,3 @@
-> Origin: earlier Armstrong template and automation work; generalized
-> 2026-07-24.
-
 # Naming conventions — Client-First (Finsweet)
 
 Use this grammar only when a project has chosen **Finsweet Client-First** or a
@@ -33,10 +30,10 @@ The container sits inside that wrapper.
 
 ## Variables ⇄ tokens
 
-Three tiers (GTC-informed — see `DECISIONS.md` 2026-07-06):
+Three tiers:
 
-1. **Base primitives** — value-scale-named variable groups (`Neutral / …`, `Teal / …`) in the **same collection** as the semantic tokens: JSON `base.<scale>.<step>` → Variable **`Neutral / 900`** → CSS **`--neutral--900`**. Value-based naming is correct here and only here. Never apply a base variable to a style directly. (Same-collection because the MCP variable tool cannot alias across collections and cannot delete/rename collections — see `pipeline/README.md` § Headless quirks. Relume's flavored themes group primitives the same way.)
-2. **Semantic tokens** — the `tokens` block below; every color is an **alias** to a base variable (JSON `alias`, Webflow `existing_variable_id`). Purpose-based names only.
+1. **Base primitives** — value-scale-named variable groups (`Neutral / …`, `Teal / …`) in the **same collection** as the semantic tokens: JSON `base.<scale>.<step>` → Variable **`Neutral / 900`** → CSS **`--neutral--900`**. Value-based naming is correct here and only here. Never apply a base variable to a style directly.
+2. **Semantic tokens** — purpose-based names only; every color is an **alias** to a base variable (JSON `alias`, Webflow `existing_variable_id`).
 3. **Component structure** — Client-First classes, not variables. The spacing system stays pure Client-First.
 
 **Modes:** color tokens may carry `modes.dark` (a base ref). Deployed as a **Dark** variable mode on the semantic collection; applied Designer-natively per style/section (`set_style_variable_mode`) or site-wide — never via custom code. Non-color categories don't take modes.
@@ -44,8 +41,7 @@ Three tiers (GTC-informed — see `DECISIONS.md` 2026-07-06):
 - Token JSON key `category.name` → Webflow Variable **`Category / Name`** (Title Case, spaces) → CSS **`--category--name`**.
   - `/` becomes `--`, spaces become `-`, all lowercased. Example: `spacing.medium` → `Spacing / Medium` → `--spacing--medium`.
 - This mapping is bidirectional and predictable; it's why Client-First was chosen over other frameworks (best machine-readability).
-- **v2 categories `shadow` and `atmosphere`** (e.g. `shadow.card` → `--shadow--card`, `atmosphere.overlay` → `--atmosphere--overlay`) live in `tokens.json` and render into `tokens.css`/`specimen.html`, but do **not** deploy as Webflow Variables (no shadow/image variable types) — they're applied as style values at Stages 4–6. Tokens at source, styles at destination.
-- **Shufflboard role mapping** (for ingesting its DESIGN.md export): `bg`→`Background Color / Primary`, `surface`→`Background Color / Secondary` + `Tertiary`, `text`→`Text Color / Primary`, `muted`→`Text Color / Secondary`, `accent`→`Accent Color / Primary` (+ derived darker `Secondary`), `border`→`Border Color / Primary`. Derive the `inverse` pair (dark band) from the accent hue — shufflboard doesn't model it.
+- **Shadow and atmosphere tokens** (e.g. `shadow.card` → `--shadow--card`, `atmosphere.overlay` → `--atmosphere--overlay`) can be defined in token systems but do **not** deploy as Webflow Variables (no shadow/image variable types) — they're applied as style values. Tokens at source, styles at destination.
 
 ## Structure classes (Client-First canonical)
 
