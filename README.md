@@ -39,6 +39,13 @@ flows, so their Webflow MCP setup skills remain separate:
 
 The three core skills are runtime-neutral.
 
+## Supporting notes
+
+These folders are repository documentation, not installable skills:
+
+- `knowledge/` — hard-won Webflow platform facts and conventions the skills stand on (quirks catalogue, verified platform facts, Client-First naming grammar, Marketer vs Designer roles).
+- `skills/webflow-designer/references/` — deeper Designer workflows for Figma-to-Webflow implementation and Preview/runtime/publication evidence.
+
 ## Install
 
 Install the repository with the Skills CLI:
