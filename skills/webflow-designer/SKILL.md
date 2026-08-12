@@ -203,6 +203,11 @@ instead of implying it passed.
 - Publication is treated as a separate action and occurs only when explicitly
   requested.
 
+## Supporting references
+
+- `references/figma-to-webflow.md` — Figma, node, or screenshot → Webflow implementation judgment.
+- `references/preview-and-state.md` — Designer Preview, runtime custom behavior, and publication-state evidence.
+
 ## Handoff
 
 Report:
