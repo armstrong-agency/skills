@@ -1,7 +1,5 @@
 # Verified Webflow platform facts
 
-> Origin: `docs/armory/decisions.md` and `docs/client-first-v3/findings.md` (armstrong-agency-internal/client-first-v3), migrated 2026-07-07.
-
 ## Platform capabilities (verified July 2026)
 
 - Webflow MCP writes elements (3 nesting levels/call), styles with
@@ -20,7 +18,7 @@
   Figma MCP `get_variable_defs` are the non-Enterprise paths.
 
 
-## Shadow DOM / CSS variable inheritance (verified April 2026, client-first-v3 sandbox)
+## Shadow DOM / CSS variable inheritance (verified April 2026)
 
 
 ## Finding 1: CSS Custom Properties Inherit Through Shadow DOM
@@ -47,13 +45,13 @@ developer intervention.
 effect inside Code Components. The Shadow DOM boundary is absolute for class-
 based styling.
 
-This was validated in Checkpoint 1 — the Hero rendered with browser defaults
+This was validated in testing — the Hero rendered with browser defaults
 until we bundled the Client-First stylesheet inside `globals.ts`.
 
 ## Finding 4: Bundling CSS in globals.ts Works But Is Inferior
 
-**Confirmed.** The Checkpoint 1 approach (import entire Client-First
-stylesheet into `globals.ts`) renders components correctly. However:
+**Confirmed.** The approach of importing entire Client-First stylesheet into
+`globals.ts` renders components correctly. However:
 
 - Creates a static copy that drifts from the host site
 - Cannot respond to variable changes
@@ -61,8 +59,8 @@ stylesheet into `globals.ts`) renders components correctly. However:
 - Adds weight to every component's Shadow DOM
 - Must be manually kept in sync with the site's actual stylesheet
 
-The token-based approach (Checkpoint 2) is strictly superior in every
-dimension except one: it requires the host site to define the tokens.
+The token-based approach is strictly superior in every dimension except one:
+it requires the host site to define the tokens.
 
 ## Finding 5: All Token Types Work
 
@@ -100,7 +98,7 @@ fallbacks that mask incompatibility.
 **Confirmed.** Code Components that declare `props.Slot()` accept both native
 Webflow elements and other Code Components as children.
 
-Tested on the Slots Test page:
+Tested:
 - **Section Wrapper** (`props.Slot({ name: "Content" })`) — accepts native
   Webflow headings, paragraphs, and other elements dropped into its Content
   slot. The wrapper provides token-styled background and padding; the slot
@@ -122,7 +120,7 @@ token styling for the wrapper, plus full Webflow design control over slot conten
 **Confirmed.** Code Component props (`props.Text`, `props.Image`, `props.Link`)
 can be bound to CMS Collection fields in the Webflow Designer.
 
-Tested on the CMS Test page:
+Tested:
 - Created a **Team Members** CMS Collection with fields: Photo (Image),
   Role (Plain Text), Bio (Plain Text), LinkedIn (Link)
 - Placed a **Team Member** Code Component inside a Collection List

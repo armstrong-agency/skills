@@ -192,6 +192,10 @@ Before handing the work back:
 Use the broader completion gate in `webflow-designer` for visual, responsive,
 interaction, component-instance, persisted-state, and publication-state QA.
 
+## Supporting references
+
+- `references/conventions.md` — detailed naming rules, token mapping, and migration cautions.
+
 ## Canonical references
 
 - https://finsweet.com/client-first/docs/intro

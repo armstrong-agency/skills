@@ -17,6 +17,9 @@ work.
 Apply Finsweet Client-First rules to Webflow structure, class naming,
 utilities, components, responsive behavior, and Navigator organization.
 
+Supporting references:
+- `references/conventions.md` — detailed naming rules, token mapping, and migration cautions
+
 ### `webflow-marketer`
 
 Assemble and update pages using only approved components, templates, classes,
@@ -29,22 +32,26 @@ Design, extend, and refactor Webflow systems. This skill covers small component
 boundaries, compounding approvals, shared-component safety, progressive custom
 behavior, troubleshooting, and complete QA before work is presented.
 
+Supporting references:
+- `references/figma-to-webflow.md` — Figma implementation judgment
+- `references/preview-and-state.md` — Designer Preview, runtime custom behavior, and publication-state evidence
+- `references/platform-facts.md` — verified Webflow platform capabilities, Shadow DOM behavior, and Code Component facts
+- `references/headless-quirks.md` — MCP tool edge cases, workarounds, and time-sensitive observations
+- `references/roles.md` — Marketer vs Designer authority boundaries and when to switch roles
+
 ## Runtime-specific setup
 
-Claude Code and Codex use different project configuration and authentication
-flows, so their Webflow MCP setup skills remain separate:
+### Claude Code
 
-- `skills/claude-code/webflow-mcp-setup`
-- `skills/codex/webflow-mcp-setup`
+`skills/claude-code/webflow-mcp-setup` — Webflow MCP connection setup for Claude Code.
 
-The three core skills are runtime-neutral.
+### Codex (removed)
 
-## Supporting notes
+The Codex Webflow MCP setup skill was removed because it doesn't work.
 
-These folders are repository documentation, not installable skills:
-
-- `knowledge/` — hard-won Webflow platform facts and conventions the skills stand on (quirks catalogue, verified platform facts, Client-First naming grammar, Marketer vs Designer roles).
-- `skills/webflow-designer/references/` — deeper Designer workflows for Figma-to-Webflow implementation and Preview/runtime/publication evidence.
+For Codex users needing Webflow access, use the **webflow-bridge** approach.
+This repository does not include webflow-bridge setup instructions; consult
+the webflow-bridge documentation or your team's internal setup guides.
 
 ## Install
 

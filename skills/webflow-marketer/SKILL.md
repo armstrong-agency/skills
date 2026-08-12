@@ -122,3 +122,9 @@ Before presenting the work:
 
 If a system-level or visual behavior problem appears, do not redesign it under
 Marketer authority. Document it precisely and hand it to `webflow-designer`.
+
+## Role boundary
+
+The Marketer role assembles approved work; the Designer role creates new
+reusable decisions. For detailed authority boundaries, task-role mappings, and
+when to switch roles, see `webflow-designer/references/roles.md`.
