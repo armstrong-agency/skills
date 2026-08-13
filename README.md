@@ -20,6 +20,16 @@ utilities, components, responsive behavior, and Navigator organization.
 Supporting references:
 - `references/conventions.md` — detailed naming rules, token mapping, and migration cautions
 
+### `mast`
+
+Apply No-Code Supply Co. Mast rules to Webflow structure, class naming,
+utilities, components, variables, Build Mode, and Navigator organization.
+
+Supporting references:
+- `references/conventions.md` — naming, class types, variables, management rules
+- `references/layout-and-grid.md` — page structure and 12-column system
+- `references/components.md` — component inventory and Build Mode notes
+
 ### `webflow-marketer`
 
 Assemble and update pages using only approved components, templates, classes,
@@ -68,6 +78,8 @@ by your agent.
 
 - Use `client-first` when the project follows Client-First or a documented
   Client-First-derived system.
+- Use `mast` when the project follows Mast or a documented Mast-derived
+  system.
 - Use `webflow-marketer` when the requested work can be assembled entirely
   from the approved system.
 - Use `webflow-designer` when the work requires a new or changed reusable
@@ -83,6 +95,6 @@ Original material in this repository is dedicated to the public domain under
 [CC0 1.0 Universal](LICENSE). Third-party material and trademarks retain their
 respective rights.
 
-Webflow, Finsweet, Client-First, and other product names and trademarks belong
+Webflow, Finsweet, Client-First, Mast, No-Code Supply Co., and other product names and trademarks belong
 to their respective owners. This repository is an independent Armstrong
 Agency project and does not imply endorsement by those companies.
