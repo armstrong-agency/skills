@@ -54,6 +54,20 @@ The Marketer role may use existing classes and approved class combinations but
 may not create new ones. A missing class, variable, variant, or component is a
 Designer decision.
 
+## Native Webflow styles
+
+Set Height, Width, Margin, Padding, Display, Position, Background, and other
+presentation on the class through Designer-native Style panel fields (or MCP
+properties that map to them). Do not invent a CSS custom property for a
+one-off value those fields already accept.
+
+Do not implement Client-First structure or decoration with custom CSS, a
+Custom Code embed, page `<style>`, or Global Canvas CSS. If Designer has no
+control for a CSS feature, approximate with supported tools or tell the user
+it is not available natively -- do not embed a workaround.
+
+See `webflow-designer` -> `references/native-styling.md`.
+
 ## Core structure
 
 Use the current Client-First section structure:
@@ -144,7 +158,7 @@ Never change a global utility to solve one element's stacking problem.
 - Use links for navigation and buttons for actions.
 - Use Webflow Label elements only for form controls.
 - Use Div Blocks for layout wrappers and purely decorative objects.
-- Reuse a design-system component named “Label,” “Button,” or similar instead
+- Reuse a design-system component named "Label," "Button," or similar instead
   of recreating its visual parts with raw elements.
 - Remove anonymous or redundant wrappers. A wrapper should have a clear class
   or a clear structural purpose.
@@ -187,6 +201,8 @@ Before handing the work back:
 - Class stacks remain understandable and have valid native selector chains.
 - Section structure, semantics, typography, spacing, and responsive behavior
   follow the site's established Client-First system.
+- Styles were set via native Style panel fields; no workaround embeds or
+  unsupported CSS.
 - The Navigator remains understandable without inspecting CSS.
 
 Use the broader completion gate in `webflow-designer` for visual, responsive,
@@ -194,7 +210,8 @@ interaction, component-instance, persisted-state, and publication-state QA.
 
 ## Supporting references
 
-- `references/conventions.md` — detailed naming rules, token mapping, and migration cautions.
+- `references/conventions.md` -- detailed naming rules, token mapping, and migration cautions.
+- `webflow-designer/references/native-styling.md` -- native Style panel first; no embed loophole.
 
 ## Canonical references
 
