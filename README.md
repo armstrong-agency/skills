@@ -18,7 +18,7 @@ Apply Finsweet Client-First rules to Webflow structure, class naming,
 utilities, components, responsive behavior, and Navigator organization.
 
 Supporting references:
-- `references/conventions.md` — detailed naming rules, token mapping, and migration cautions
+- `references/conventions.md` -- detailed naming rules, token mapping, and migration cautions
 
 ### `mast`
 
@@ -26,9 +26,9 @@ Apply No-Code Supply Co. Mast rules to Webflow structure, class naming,
 utilities, components, variables, Build Mode, and Navigator organization.
 
 Supporting references:
-- `references/conventions.md` — naming, class types, variables, management rules
-- `references/layout-and-grid.md` — page structure and 12-column system
-- `references/components.md` — component inventory and Build Mode notes
+- `references/conventions.md` -- naming, class types, variables, management rules
+- `references/layout-and-grid.md` -- page structure and 12-column system
+- `references/components.md` -- component inventory and Build Mode notes
 
 ### `webflow-marketer`
 
@@ -43,17 +43,18 @@ boundaries, compounding approvals, shared-component safety, progressive custom
 behavior, troubleshooting, and complete QA before work is presented.
 
 Supporting references:
-- `references/figma-to-webflow.md` — Figma implementation judgment
-- `references/preview-and-state.md` — Designer Preview, runtime custom behavior, and publication-state evidence
-- `references/platform-facts.md` — verified Webflow platform capabilities, Shadow DOM behavior, and Code Component facts
-- `references/headless-quirks.md` — MCP tool edge cases, workarounds, and time-sensitive observations
-- `references/roles.md` — Marketer vs Designer authority boundaries and when to switch roles
+- `references/native-styling.md` -- Designer-native style fields; no embed or custom-property workarounds
+- `references/figma-to-webflow.md` -- Figma implementation judgment
+- `references/preview-and-state.md` -- Designer Preview, runtime custom behavior, and publication-state evidence
+- `references/platform-facts.md` -- verified Webflow platform capabilities, Shadow DOM behavior, and Code Component facts
+- `references/headless-quirks.md` -- MCP tool edge cases, workarounds, and time-sensitive observations
+- `references/roles.md` -- Marketer vs Designer authority boundaries and when to switch roles
 
 ## Runtime-specific setup
 
 ### Claude Code
 
-`skills/claude-code/webflow-mcp-setup` — Webflow MCP connection setup for Claude Code.
+`skills/claude-code/webflow-mcp-setup` -- Webflow MCP connection setup for Claude Code.
 
 ### Codex (removed)
 
