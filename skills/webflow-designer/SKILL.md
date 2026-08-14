@@ -7,12 +7,12 @@ description: Design, build, extend, and refactor Webflow pages and reusable syst
 
 Create or change reusable design decisions without weakening the system that is
 already there. The Designer role has broader authority than
-`webflow-marketer`, but that authority begins with discovery and reuse—not with
+`webflow-marketer`, but that authority begins with discovery and reuse--not with
 creating new classes.
 
-Use the project's framework skill, such as `client-first`, alongside this skill
-when applicable. Use Webflow's official skills or current platform guidance
-for tool mechanics; this skill governs implementation judgment, review
+Use the project's framework skill (`client-first` or `mast`) alongside this
+skill when applicable. Use Webflow's official skills or current platform
+guidance for tool mechanics; this skill governs implementation judgment, review
 boundaries, and what counts as complete.
 
 ## Designer authority
@@ -84,13 +84,28 @@ Use these rules:
 
 ## Native Webflow first
 
-Build layout, sizing, positioning, visibility, responsive behavior, variables,
-and reusable presentation with native Webflow features wherever practical.
-The normal Designer canvas should communicate the component's base structure
+Use native Style panel fields (or MCP style properties that map to them)
+before variables, and variables before custom CSS. Height, Width, Max Width,
+Margin, Padding, Display, Position, Background, typography, borders, radius,
+shadows, overflow, z-index, and opacity belong on the class in Designer.
+
+See `references/native-styling.md`.
+
+Build layout, sizing, positioning, visibility, responsive behavior, and
+reusable presentation with those native fields wherever practical. The
+normal Designer canvas should communicate the component's base structure
 and appearance without relying on page-level scripts or hidden CSS.
 
-Use custom code for behavior Webflow cannot express cleanly, not as the
-unnecessary source of ordinary presentation. When custom behavior is needed:
+Do not create a Webflow variable for a one-off value a native field already
+accepts. Variables are reusable system tokens, not a styling backdoor.
+
+If Designer has no control for a CSS feature, do not fake it with an embed
+or `<style>` block. Approximate with supported tools or tell the user it is
+not available natively.
+
+Custom code is only for behavior Webflow cannot express, never for ordinary
+presentation or to dodge framework or Designer rules. When custom behavior
+is needed:
 
 - keep base content, layout, and appearance usable without JavaScript;
 - scope the controller to a component root;
@@ -171,6 +186,11 @@ instead of implying it passed.
 - Shared definitions and unrelated instances remain intact.
 - The Navigator, semantic elements, and class stacks are understandable.
 - Legacy and replacement implementations are not running simultaneously.
+- Presentation uses native Style panel fields (see `references/native-styling.md`).
+- No unsupported CSS (for example repeating radial backgrounds Designer cannot set).
+- No one-off custom properties standing in for Height, Width, Margin, Padding,
+  Display, Position, or Background.
+- No new Custom Code embed, page CSS, or Global Canvas CSS dump as a workaround.
 
 ### Visual and responsive
 
@@ -205,11 +225,12 @@ instead of implying it passed.
 
 ## Supporting references
 
-- `references/figma-to-webflow.md` — Figma, node, or screenshot → Webflow implementation judgment.
-- `references/preview-and-state.md` — Designer Preview, runtime custom behavior, and publication-state evidence.
-- `references/platform-facts.md` — Verified Webflow platform capabilities, Shadow DOM behavior, and Code Component facts.
-- `references/headless-quirks.md` — MCP tool edge cases, workarounds, and time-sensitive observations.
-- `references/roles.md` — Marketer vs Designer authority boundaries and when to switch roles.
+- `references/native-styling.md` -- Designer-native style fields; no embed or custom-property workarounds.
+- `references/figma-to-webflow.md` -- Figma, node, or screenshot -> Webflow implementation judgment.
+- `references/preview-and-state.md` -- Designer Preview, runtime custom behavior, and publication-state evidence.
+- `references/platform-facts.md` -- Verified Webflow platform capabilities, Shadow DOM behavior, and Code Component facts.
+- `references/headless-quirks.md` -- MCP tool edge cases, workarounds, and time-sensitive observations.
+- `references/roles.md` -- Marketer vs Designer authority boundaries and when to switch roles.
 
 ## Handoff
 
