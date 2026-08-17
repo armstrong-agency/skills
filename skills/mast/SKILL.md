@@ -148,29 +148,34 @@ Project-specific classes for unique components. Allowed sparingly. Put needed
 styles on the custom class itself rather than stacking utilities onto it.
 The custom class is **not** named `cc-foo` unless it is a combo.
 
+Official Mast custom class examples from No-Code Supply Co. docs:
+
 ```text
 blog_header-title
-pricing_card-badge
+nav-logo_link
+nav-menu_container
+footer-social_list
 ```
 
-The underscore in `blog_header-title` is Mast context (levels inside a
-component or page) per NCSC docs. It is **not** Client-First folder grammar.
-Do not treat every underscore as a CF class.
+The underscore separates **context levels** within a component or page scope.
+The hyphen connects words **within** a multi-word name. This is stock Mast
+grammar from official No-Code Supply Co. documentation -- **not** Client-First
+BEM patterns or folder underscores.
 
 ### Combo classes
 
-Prefix `cc-`. Variants on a base or custom class only -- never a stand-alone
-unique component name:
+Prefix `cc-`. A **modifier** on a base or custom class only -- never a
+stand-alone unique component name. Official Mast examples:
 
 ```text
-container cc-narrow
+section cc-home
 section cc-footer
-input cc-textarea
-tabs-link cc-active
+container cc-narrow
 ```
 
-Do not name a new unique component class `cc-hero`. Do not use Client-First
-`is-` (`is-secondary`, `is-dark`, ...).
+`cc-` is always a **variant** on something else (`section`, `container`,
+`card`, or a custom class). Do not name a new unique component `cc-hero`.
+Do not use Client-First `is-` (`is-secondary`, `is-dark`, ...).
 
 ## No Client-First grammar on Mast jobs
 
@@ -189,12 +194,15 @@ underscore (`section_hero`, `feature-grid_component`) is a different grammar
 
 ## Naming grammar
 
+Official Mast naming rules from No-Code Supply Co. documentation:
+
 - Lowercase only; use CSS-safe characters so Designer names match live CSS.
-- Hyphen `-` inside a multi-word name or size/breakpoint token.
-- Underscore `_` between levels of context inside a component or page
-  (`blog_header-title`). That is Mast, not Client-First folders.
-- Purpose prefixes: `u-` utilities, `cc-` combos, `styles__` for style-guide-only
-  helpers.
+- Hyphen `-` **within** a multi-word name or size/breakpoint token.
+- Underscore `_` **between** context levels inside a component or page scope
+  (`blog_header-title`, `nav-menu_container`). This is stock Mast naming, not
+  Client-First BEM patterns or folder grammar.
+- Purpose prefixes: `u-` utilities, `cc-` combo modifiers on base/custom
+  classes, `styles__` for style-guide-only helpers.
 - Breakpoint infixes on layout/utilities: `-lg-` desktop, `-md-` tablet,
   `-sm-` mobile landscape, `-xs-` mobile portrait (e.g. `col-lg-8`,
   `u-md-d-none`).
