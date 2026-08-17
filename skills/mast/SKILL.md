@@ -158,9 +158,9 @@ footer-social_list
 ```
 
 The underscore separates **context levels** within a component or page scope.
-The hyphen connects words **within** a multi-word name. This is Mast-specific
-grammar aligned to official docs -- **not** Client-First BEM
-(`home-hero-card_wrap` style) and **not** Client-First folder underscores.
+The hyphen connects words **within** a multi-word name. This is stock Mast
+grammar from official No-Code Supply Co. documentation -- **not** Client-First
+BEM patterns or folder underscores.
 
 ### Combo classes
 
@@ -171,7 +171,6 @@ stand-alone unique component name. Official Mast examples:
 section cc-home
 section cc-footer
 container cc-narrow
-card cc-hover
 ```
 
 `cc-` is always a **variant** on something else (`section`, `container`,
@@ -201,7 +200,7 @@ Official Mast naming rules from No-Code Supply Co. documentation:
 - Hyphen `-` **within** a multi-word name or size/breakpoint token.
 - Underscore `_` **between** context levels inside a component or page scope
   (`blog_header-title`, `nav-menu_container`). This is stock Mast naming, not
-  Client-First BEM (`home-hero-card_wrap` style) and not CF folder grammar.
+  Client-First BEM patterns or folder grammar.
 - Purpose prefixes: `u-` utilities, `cc-` combo modifiers on base/custom
   classes, `styles__` for style-guide-only helpers.
 - Breakpoint infixes on layout/utilities: `-lg-` desktop, `-md-` tablet,

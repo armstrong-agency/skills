@@ -47,8 +47,8 @@ footer-social_list
 
 The underscore separates context levels within a component or page scope. The
 hyphen joins words within a multi-word name. This is stock Mast grammar from
-official documentation -- **not** Client-First BEM style
-(`home-hero-card_wrap`) and **not** CF folder underscores.
+official No-Code Supply Co. documentation -- **not** Client-First BEM patterns
+or folder underscores.
 
 A **combo** is a `cc-` **modifier** attached to a base or custom class:
 
@@ -56,18 +56,17 @@ A **combo** is a `cc-` **modifier** attached to a base or custom class:
 section cc-home
 section cc-footer
 container cc-narrow
-card cc-hover
 ```
 
 `cc-` is always a **variant** on a base class (`section`, `container`, `card`)
 or a custom class -- never a stand-alone unique component name. Do not name a
 new unique component `cc-hero`. Do not use Client-First `is-`.
 
-**Site-local note**: Some live Mast-derived sites (e.g. Dyno) use a
-hyphenated-block + `_element` hybrid (`home-hero-anim_wrap`,
-`home-hero-heading_mark`). That is site-specific, not stock Mast. Follow the
-project's established pattern, but do not present hybrids as official Mast when
-creating skills, examples, or references.
+**Project-local naming**: Individual projects may establish naming conventions
+that deviate from stock Mast. When working on such a project, follow its
+documented patterns consistently, but do not encode project-specific deviations
+into reusable skills, examples, or reference documentation. Keep framework
+guidance aligned to the official No-Code Supply Co. documentation.
 
 ## Forbidden on Mast jobs
 
@@ -100,8 +99,7 @@ Official Mast naming from No-Code Supply Co. documentation:
 - `-` (hyphen) **within** a multi-word token or size/breakpoint fragment.
 - `_` (underscore) **between** context levels inside a component or page scope
   (`blog_header-title`, `nav-menu_container`, `footer-social_list`). This is
-  stock Mast, not Client-First BEM (`home-hero-card_wrap` style) and not CF
-  folder grammar.
+  stock Mast, not Client-First BEM patterns or folder grammar.
 - Meaningful short names; abbreviate long words when clarity survives.
 
 ### Breakpoint infixes
