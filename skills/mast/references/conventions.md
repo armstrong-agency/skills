@@ -36,24 +36,38 @@ Rules of thumb:
 A **custom class** is a unique component or element class. Name it for the
 thing, not as a combo. Put the styles on that class.
 
+Official Mast custom class examples from No-Code Supply Co. docs:
+
 ```text
 blog_header-title
-pricing_card-badge
+nav-logo_link
+nav-menu_container
+footer-social_list
 ```
 
-A **combo** is a `cc-` variant attached to a base or custom class:
+The underscore separates context levels within a component or page scope. The
+hyphen joins words within a multi-word name. This is stock Mast grammar from
+official documentation -- **not** Client-First BEM style
+(`home-hero-card_wrap`) and **not** CF folder underscores.
+
+A **combo** is a `cc-` **modifier** attached to a base or custom class:
 
 ```text
-container cc-narrow
+section cc-home
 section cc-footer
-tabs-link cc-active
+container cc-narrow
+card cc-hover
 ```
 
-Do not name a new unique component `cc-hero`. Do not use Client-First `is-`.
+`cc-` is always a **variant** on a base class (`section`, `container`, `card`)
+or a custom class -- never a stand-alone unique component name. Do not name a
+new unique component `cc-hero`. Do not use Client-First `is-`.
 
-The underscore in `blog_header-title` is Mast context (levels inside a
-component or page). It is not Client-First folder grammar. Do not treat every
-underscore as a CF class.
+**Site-local note**: Some live Mast-derived sites (e.g. Dyno) use a
+hyphenated-block + `_element` hybrid (`home-hero-anim_wrap`,
+`home-hero-heading_mark`). That is site-specific, not stock Mast. Follow the
+project's established pattern, but do not present hybrids as official Mast when
+creating skills, examples, or references.
 
 ## Forbidden on Mast jobs
 
@@ -80,10 +94,14 @@ See `webflow-designer` -> `references/native-styling.md`.
 
 ## Naming grammar
 
+Official Mast naming from No-Code Supply Co. documentation:
+
 - Lowercase; CSS-safe characters so Designer matches published CSS.
-- `-` within a multi-word token or size/breakpoint fragment.
-- `_` between context levels inside a component/page (`blog_header-title`).
-  That is Mast, not Client-First folders.
+- `-` (hyphen) **within** a multi-word token or size/breakpoint fragment.
+- `_` (underscore) **between** context levels inside a component or page scope
+  (`blog_header-title`, `nav-menu_container`, `footer-social_list`). This is
+  stock Mast, not Client-First BEM (`home-hero-card_wrap` style) and not CF
+  folder grammar.
 - Meaningful short names; abbreviate long words when clarity survives.
 
 ### Breakpoint infixes
