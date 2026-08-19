@@ -57,6 +57,10 @@ Variables are reusable system tokens, not a backdoor for one-off values that nat
 
 See `references/native-styling.md`.
 
+## Never add Webflow labels / Navigator display names
+
+Do not set Webflow labels (the Navigator display name / node name shown in the Webflow Designer Navigator panel) on elements unless the user specifically asked for them. Labeling nodes is a forbidden habit. The Navigator element tree and class names must be sufficient.
+
 ## When the full review loop runs
 
 Run the complete **page-plan + section loops** only for:
