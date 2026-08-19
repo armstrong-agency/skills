@@ -61,6 +61,10 @@ See `references/native-styling.md`.
 
 Do not set Webflow labels (the Navigator display name / node name shown in the Webflow Designer Navigator panel) on elements unless the user specifically asked for them. Labeling nodes is a forbidden habit. The Navigator element tree and class names must be sufficient.
 
+## Images are siblings, not children of text
+
+Do not nest Image, icon, or embed nodes inside text elements (span, paragraph, heading, or any other text node). Place images as their own sibling Image / embed / icon node, positioned next to the text rather than nested within it.
+
 ## When the full review loop runs
 
 Run the complete **page-plan + section loops** only for:
