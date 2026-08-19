@@ -9,3 +9,10 @@
 - Never include private client screenshots, extracted tokens, site IDs, or evaluation artifacts in the public repository.
 - Treat persisted Webflow state, visual QA, and publishing as separate checkpoints.
 - Original repository material is CC0. Link to third-party documentation rather than copying substantial third-party text.
+
+## Working model
+
+- Use `webflow-build` for how to build: reuse ladder, native styling, completion gates, confirmation checkpoints, and full review loop only when inventing new system decisions.
+- Use `framework/client-first` or `framework/mast` for grammar only (class naming, structure, taxonomy).
+- Official Webflow skills remain complementary for platform operations (MCP tools, publishing workflows, CMS operations, technical audits).
+- Never publish unless the user explicitly requests publication.
