@@ -2,3 +2,7 @@
 .codex/
 *-workspace/
 feedback.json
+
+# Many global gitignores exclude `build/`. Keep the wf-build skill folder.
+!skills/wf-build/
+!skills/wf-build/**
