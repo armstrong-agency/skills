@@ -5,7 +5,7 @@ description: Build a standalone HTML prototype of one Webflow section for layout
 
 # Webflow prototype
 
-**Version 0.1.0** — work in progress
+**Version 0.1.0**
 
 HTML for **one section**. This sits between plan and build. It's for layout, mobile, and animation timing — faster than Webflow MCP.
 
@@ -19,7 +19,7 @@ Read `webflow-context.md` and the matching `framework-grammar/` file. Use the cl
 
 Write a self-contained HTML file in the project, for example `prototype/<section>.html`, with CSS in the same file or beside it.
 
-Match the planned class names so build can translate them. Include the mobile behavior from the plan. If motion matters, put the timing in CSS so the user can feel it.
+Match the planned class names so build can translate them. Include the mobile behavior from the plan. If motion matters, put the timing in CSS so the user can feel it. Javascript is allowed, but rely as much as possible on native HTML and CSS that can be replicated in Webflow without custom embeds. 
 
 Open it in the browser so they have a page to click (local file or a local preview URL).
 

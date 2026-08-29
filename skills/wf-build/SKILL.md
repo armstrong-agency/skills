@@ -5,7 +5,7 @@ description: Implement a planned Webflow section in Webflow MCP using existing c
 
 # Webflow build
 
-**Version 0.1.0** — work in progress
+**Version 0.1.0**
 
 Put a planned (and usually prototyped) section into Webflow.
 
@@ -13,14 +13,14 @@ You can start here with no prior skills. Ask first — it's slower without `webf
 
 ## Before you write
 
-Read `webflow-context.md` if it exists. Read `framework-grammar/client-first.md` or `framework-grammar/mast.md` for the site's convention.
+Read `webflow-context.md` if it exists. Read the framework grammar file to find the appropriate convention.
 
 If context is thin, ask:
 
 1. Which site and page (default: a new unpublished draft page).
 2. Which section, this pass only.
-3. Grammar — or wait until they point at audit/plan.
-4. Destination from the plan: draft, staging, or production. Don't publish unless they explicitly ask now.
+3. Framework — or wait until they point at audit/plan.
+4. Destination from the plan: draft, staging, or production. Don't publish unless they explicitly ask.
 
 List the Webflow MCP tools this session actually exposes. Use those names. Official Webflow MCP docs cover how the tools work.
 
@@ -34,30 +34,23 @@ Reuse in this order: existing component → existing class → combo on an exist
 
 Set appearance with Designer Style panel fields (or MCP properties that map to them): size, margin, padding, display, flex, grid, position, typography, background, border, radius, shadow, overflow, opacity.
 
-Prefer longhand (`margin-top`) so a shorthand write doesn't clobber siblings.
+No custom CSS, embeds, or page `<style>` for layout or decoration. If Designer can't set it, say so. User may approve custom css but default is to work natively in Webflow.
 
-No custom CSS, embeds, or page `<style>` for layout or decoration. If Designer can't set it, say so.
+No Navigator labels / display names. Class names are the names. Relabeling elements in the Navigator is confusing and unnecessary.
 
-No Navigator labels / display names. Class names are the names. Relabeling elements in the Navigator is confusing and unused.
+Images, icons, and embeds sit beside text, not inside headings or paragraphs as <span> elements.
 
-Images, icons, and embeds sit beside text, not inside headings or paragraphs.
+Don't create a Webflow variable for a one-off Height or Width. Variables are shared tokens and should be part of the full design system. 
 
-Don't create a Webflow variable for a one-off Height or Width. Variables are shared tokens.
-
-## Shared components
-
-If you would change a component definition, say so and work on a duplicate on a draft page first.
-
-**Collection Lists cannot live inside a component.** Put the Collection List outside. Bind CMS fields onto the component instance as props.
 
 ## Common issues
 
 - Variable aliases stay in the same collection. Cross-collection aliases fail. Creating a collection is usually a one-way door — keep primitives and semantics together.
-- Put text on headings, paragraphs, and text links. A generic Div often ignores text.
+- Put text on headings, paragraphs, and text links. A generic Div is not for text content.
 - Two combos with the same name (`is-secondary` on different bases) can attach to the wrong class. Check after creating one.
 - Page links set at create time can save as `#`. Set the link, then read it back.
 - Don't unlink a component to work around a failed insert. Insert into a parent, then reorder.
-- Saved draft, Designer canvas, Preview, and the live site can disagree. Publishing is not how you take a screenshot.
+- Saved draft, Designer canvas, Preview, and the live site can disagree. Ask the user to refresh their canvas or get permission to publish to staging. 
 - Large nested creates get truncated. Several medium writes beat one giant one.
 
 ## Check

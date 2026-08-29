@@ -5,15 +5,15 @@ description: Plan Webflow work with the user before anything is built — what t
 
 # Webflow plan
 
-**Version 0.1.0** — work in progress
+**Version 0.1.0**
 
-Talk to the user until the job is specific. Choose classes. Confirm. Stop. Nothing is written to Webflow from this skill.
+Talk to the user until the job is specific and context is clear. Plan the classes you want to use. Confirm and get permission. Stop before building. Nothing is written to Webflow from this skill.
 
 ## Start from context
 
 Read `webflow-context.md` if it exists. Audit may already have grammar, colors, and classes.
 
-Once the naming convention is known, read `framework-grammar/client-first.md` or `framework-grammar/mast.md`. Use that file for names.
+Once the naming convention is determined, find the appropriate convention file in the `framework-grammar` folder and use it for naming.
 
 If context is missing, ask the user or run `wf-audit` first.
 
@@ -23,7 +23,7 @@ If context is missing, ask the user or run `wf-audit` first.
 2. **Mobile.** What should change at tablet and phone.
 3. **Destination.** Unpublished draft, staging, or production — when they eventually ship. Plan does not publish. Build will follow this answer.
 
-Figma mapping is out of scope for this version. If they share Figma, treat it as a picture of intent, not as CSS values.
+Screenshots and Figma files are useful visual guides for understanding user intent. Use them to sample color values, text sizes, spacing, and other style details as accurately as possible.
 
 ## Classes
 

@@ -5,9 +5,9 @@ description: Connect a project to a Webflow workspace over MCP so each repo can 
 
 # Webflow MCP setup
 
-**Version 0.1.0** — work in progress
+**Version 0.1.0**
 
-Give this project its own Webflow MCP connection so you can move between client workspaces without re-authorizing every time. Claude Code and Cursor. Not Codex.
+Give this project its own Webflow MCP connection so you can move between client workspaces without re-authorizing every time. Claude Code and Cursor. This process does not work for Codex due to the shared nature of Codex MCP servers.
 
 Official install if you need the current UI: [Cursor](https://developers.webflow.com/mcp/installing/cursor), [Claude Code](https://developers.webflow.com/mcp/installing/claude-code).
 
