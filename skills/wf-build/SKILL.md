@@ -45,13 +45,7 @@ Don't create a Webflow variable for a one-off Height or Width. Variables are sha
 
 ## Common issues
 
-- Variable aliases stay in the same collection. Cross-collection aliases fail. Creating a collection is usually a one-way door — keep primitives and semantics together.
-- Put text on headings, paragraphs, and text links. A generic Div is not for text content.
-- Two combos with the same name (`is-secondary` on different bases) can attach to the wrong class. Check after creating one.
-- Page links set at create time can save as `#`. Set the link, then read it back.
-- Don't unlink a component to work around a failed insert. Insert into a parent, then reorder.
-- Saved draft, Designer canvas, Preview, and the live site can disagree. Ask the user to refresh their canvas or get permission to publish to staging. 
-- Large nested creates get truncated. Several medium writes beat one giant one.
+Read `references/common-issues.md` for operational quirks: combo attachment, nesting constraints, Designer MCP session behavior, variable scoping, and publishing flow differences.
 
 ## Check
 

@@ -15,6 +15,8 @@ Read `webflow-context.md` if it exists. Audit may already have grammar, colors, 
 
 Once the naming convention is determined, find the appropriate convention file in the `framework-grammar` folder and use it for naming.
 
+Skim `references/common-issues.md` for MCP/Designer constraints that affect feasibility (nesting limits, variable scoping, component unlinking, Designer session state).
+
 If context is missing, ask the user or run `wf-audit` first.
 
 ## Ask
