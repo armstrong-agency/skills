@@ -10,12 +10,16 @@ Keep this file short. Add a bullet only after it burned real time on a job. No c
 - Applying two utilities as one MCP style write (e.g. `padding-global` + `padding-section-*` in a single empty dual combo) can create a useless empty class. Prefer two style names on the element, or create/apply each utility the way the Designer would.
 - Underscore = virtual folder for custom classes. Don't invent deep stacks of wrappers that only exist to hold a name.
 
+
+
 ## Elements and nesting
 
-- **Text Link** (`Link`) generally cannot nest Div / HtmlEmbed children. For a clickable row that needs an icon, chevron, or other nested block: use a **Link Block**, or put the icon as a **sibling** and style/position it (and wire open-state CSS or JS to the sibling).
+- **Text Link** (`Link`) generally cannot nest Div / HtmlEmbed children. For a clickable row that needs an icon, chevron, or other nested block: use a **Link Block**, or put the icon as a **sibling** and style/position it.
 - Put text on headings, paragraphs, and text links. A generic Div is not for text content.
 - Images, icons, and embeds sit beside text — not inside headings or paragraphs as spans.
 - Don't unlink a component to work around a failed insert. Insert into a parent, then reorder.
+
+
 
 ## Attributes and props
 
@@ -23,10 +27,14 @@ Keep this file short. Add a bullet only after it burned real time on a job. No c
 - Page links set at create time can save as `#`. Set the link, then read it back.
 - Don't create a Webflow variable for a one-off height or width. Variables are shared tokens.
 
+
+
 ## Variables
 
 - Variable aliases stay in the same collection. Cross-collection aliases fail.
 - Creating a collection is usually a one-way door — keep primitives and semantics together unless the project already splits them.
+
+
 
 ## Designer / MCP session
 
@@ -35,19 +43,27 @@ Keep this file short. Add a bullet only after it burned real time on a job. No c
 - When editing a **component definition**, the canvas may report a different `pageId` than the host page you opened from. Use the `pageId` returned by select/get-current for writes inside that component view; pass `scope_component_id` when tools require it.
 - Large nested creates get truncated. Several medium writes beat one giant one.
 - Discover Webflow MCP tool names in-session. Don't hardcode names from memory or old docs.
+- Webflow native Tab elements sometimes have issues adding new tabs. Either add a fresh tab item and restyle + add content, or ask the user for help; do not duplicate an exisiting tab item.
+
+
 
 ## Breakpoints and state
 
 - Style changes on `main` cascade; overrides on `medium` / `small` / `tiny` only where needed. Confirm the breakpoint you intended after an update.
 - Open/active UI state that JS toggles (`is-active`, etc.) must match the class the script actually sets. If the script targets a child and the markup puts the icon as a sibling (or the reverse), rotate/open styles won't fire — align markup and script, or use a selector that matches the real DOM.
 
+
+
 ## Publishing
 
-- Never publish production unless the user explicitly asks. Prefer draft or staging when a destination was planned.
-- Stage publish is still a real publish to a staging domain — call that out; don't say "saved" when you published.
+- Never publish production unless the user explicitly asks. Prefer draft.
+- Stage publish is still a real publish to a staging domain. Confirm with the user at the beginning of the workstream if publishes to staging are allowed. Changes save automatically in Webflow so no need to say "Saved." 
 
-## How to add to this file
 
-1. It cost real time on a real job.
+
+## Criteria to add to this file
+
+1. A mistake cost real time on a real job.
 2. It's about platform/MCP/Designer behavior, not one client's design system.
 3. One short bullet; link to official docs when they exist instead of pasting long excerpts.
+
