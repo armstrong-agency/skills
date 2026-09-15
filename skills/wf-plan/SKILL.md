@@ -1,55 +1,85 @@
 ---
 name: wf-plan
-description: Plan Webflow work with the user before anything is built — what to make, mobile behavior, reuse vs new classes, and whether the destination is draft, staging, or production. Use when the user asks to plan, scope, or figure out a Webflow page or section. Does not write to Webflow.
+description: Plan Webflow work before writing — page and section inventory, reuse discovery, Figma mapping, and written justifications for anything new. Use whenever the user asks to plan, map, estimate, scope, or figure out how to build in Webflow before implementation. Pair with a framework grammar skill for naming. Do not mutate the site from this skill.
 ---
 
-# Webflow plan
+# Webflow Plan
 
-**Version 0.1.0**
+Decide what to build, what to reuse, and what needs approval — then stop. This skill does not create classes, components, or page content.
 
-Talk to the user until the job is specific and context is clear. Plan the classes you want to use. Confirm and get permission. Stop before building. Nothing is written to Webflow from this skill.
+Use `wf-prototype` or `wf-build` only after the plan is approved.
 
-## Start from context
+## Grammar first
 
-Read `webflow-context.md` if it exists. Audit may already have grammar, colors, and classes.
+Do this before recommending a class name:
 
-Once the naming convention is determined, find the appropriate convention file in the `framework-grammar` folder and use it for naming.
+1. Inspect the Style Guide, existing classes, and project instructions.
+2. Name the convention: Client-First, Mast, mixed, or none.
+3. If a matching `grammar/*` skill is installed, **read that skill now**. Do not write class names from memory or from a different grammar.
+4. If the convention is unclear, say so and wait. Do not pick a grammar because it is installed.
 
-Skim `references/common-issues.md` for MCP/Designer constraints that affect feasibility (nesting limits, variable scoping, component unlinking, Designer session state).
+**Style guide wins over framework on class names.** If they disagree, follow the style guide and flag it in the plan.
 
-If context is missing, ask the user or run `wf-audit` first.
+## Ask first
 
-## Ask
+1. **Where should this live?** Default recommendation: a new unpublished draft/sandbox page. Do not assume a live page.
+2. **What is the source of truth?** Live Webflow, Figma, a screenshot, a written brief, or a mix. State which evidence is authoritative for each claim.
+3. **Which framework?** Answered by Grammar first. Do not skip it.
 
-1. **What are we building?** Page, section, extra behavior (forms, CMS, motion).
-2. **Mobile.** What should change at tablet and phone.
-3. **Destination.** Unpublished draft, staging, or production — when they eventually ship. Plan does not publish. Build will follow this answer.
+## Page plan
 
-Screenshots and Figma files are useful visual guides for understanding user intent. Use them to sample color values, text sizes, spacing, and other style details as accurately as possible.
+List sections in order. For each section record:
 
-## Classes
+- responsibility (what the band is for)
+- closest existing Webflow component, class, utility, or live section
+- Figma node or screenshot crop when a design source exists
+- assemble vs invent: can this ship from existing pieces, or does it need a new class/component/variable?
+- open questions and risks (shared-component blast radius, CMS, interactions)
 
-Using the grammar file and the class list in context:
+Do not enter a section build loop from this skill.
 
-- **Reuse** — existing components, classes, combos, variables.
-- **New** — only when reuse can't do the job. Proposed name (from the grammar file) and why.
+## Reuse discovery (required)
 
-Go through this with the user. Don't invent a class they haven't confirmed.
+Before recommending anything new, inventory:
 
-## Write
+- components, variants, props, and slots that already own the job
+- global and project classes, combos, variables, and modes
+- nearby approved pages or style-guide specimens
+- Figma visual-similar search when a Figma source is provided
 
-Update `webflow-context.md` with:
+A familiar name is only a candidate. Inspect actual responsibility, breakpoints, consumers, and behavior.
 
-```markdown
-## Plan
+## Justifications for new work
 
-Sections (in order):
-- [name]: reuse […] / new […] — why if new
-Mobile:
-Destination: draft | staging | production
-Open questions:
+If a new class, combo, component, variable, or interaction is needed, write the justification in the plan *before* anyone builds:
+
+- what existing piece was considered and why it fails
+- the distinct responsibility of the new piece
+- proposed name using the grammar skill already loaded
+- where it will be prototyped (draft/sandbox) before any live page
+
+No justification, no invent recommendation.
+
+## Figma
+
+When Figma, a node, or a supplied screenshot is the approved source, read `../references/figma-to-webflow.md` before mapping. Calibrate screenshot scale. Do not treat a raster as CSS pixels until anchors agree.
+
+## Shared-component caution
+
+If the plan would change a shared component definition, inventory instances, variants, slots, and consumers. Recommend prototyping on a duplicate on a sandbox page. Do not recommend unlinking to dodge that work.
+
+## Handoff
+
+Return a plan the next skill can execute. Use this skeleton:
+
+```text
+Destination: [sandbox / named page] — not written
+Source of truth:
+Grammar: [client-first | mast | mixed | none | unclear]
+Sections:
+- [name]: reuse [x] / invent [y] — justification if invent
+Approvals still needed:
+Unproven:
 ```
 
-## Next
-
-`wf-prototype` for an HTML pass of a section (motion, breakpoints, faster than Webflow). `wf-build` to put it in Webflow. Skipping prototype is allowed; build is slower without a plan and a prototype.
+Do not present a plan as completed implementation.

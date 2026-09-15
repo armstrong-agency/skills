@@ -13,9 +13,10 @@
 ## Working model
 
 - `wf-mcp-setup` — project-scoped MCP (Claude Code or Cursor, not Codex).
-- `wf-audit` — style guide, colors, classes → `webflow-context.md`.
+- `wf-audit` — read-only style guide / naming / connected-site check.
+- `wf-design-system` — token catalog → `DESIGN.md`; no Webflow writes.
 - `wf-plan` — talk through the job; no Webflow writes.
-- `wf-prototype` — HTML for one section; no Webflow MCP.
+- `wf-prototype` — assemble on an unpublished draft page; existing classes only.
 - `wf-build` — implement in Webflow, one section at a time.
 - `framework-grammar/` — Client-First and Mast naming.
 - `references/` — shared MCP/Designer footguns.

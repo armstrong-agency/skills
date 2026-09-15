@@ -1,46 +1,76 @@
 ---
 name: wf-audit
-description: Review a Webflow site's style guide, colors, and class naming. Use when the user asks to audit, review, inspect, or catalog the design system of a Webflow site. Writes a project context file for later plan, prototype, and build work. Does not change the site.
+description: Read-only Webflow audit — check whether a style guide exists, whether a naming convention is in use, and diagnose connected or public-site issues. Use when the user asks to audit, review, diagnose, or inspect a Webflow site without editing. Pair with a grammar skill to judge naming. Do not extract design tokens (use wf-design-system). Do not mutate or publish.
 ---
 
-# Webflow audit
+# Webflow Audit
 
-**Version 0.1.0**
+Review a Webflow site without changing it. First questions: is there a Style Guide, and is there a naming convention? Token extraction belongs in `wf-design-system`. Fixes belong in `wf-plan` or `wf-build`.
 
-Look at the site. Record the style guide, colors, and classes. Confirm with the user. Write `webflow-context.md` so plan, prototype, and build can reuse it.
+Two modes. Do not mix evidence.
 
-A public URL is enough. A connected Webflow MCP session can add class and variable names the published HTML doesn't show.
+| Mode | Input | What it can prove |
+| --- | --- | --- |
+| **Connected** | Authenticated Webflow MCP / Designer | Persisted tree, styles, components, draft vs published, Preview |
+| **Public** | A public URL | Rendered HTML/CSS only. Not Navigator, variables, components, or drafts |
 
-## Walkthrough
+## Grammar first
 
-Do the whole pass, then write the file. Ask only if you cannot find the site.
+Do this before judging names:
 
-1. **Where** — use the public URL they gave, or the connected Webflow site. Ask only if neither is available.
-2. **Style guide** — find a Style Guide page or equivalent. Name it. If none, say so.
-3. **Naming** — Client-First, Mast, mixed, or none. If it matches `framework-grammar/client-first.md` or `framework-grammar/mast.md`, read that file. Infer from class names; don't wait for the user to name the convention.
-4. **Colors** — the palette actually in use (hex or variable names).
-5. **Type** — families and the recurring sizes you can see.
-6. **Classes** — structure, utilities, and components the project already has. This is the reuse list for later skills.
-7. **Buttons and controls** — primary / secondary (and any other states you can see).
+1. Collect naming signals from the Style Guide and class list (connected) or from rendered class names (public).
+2. Name the convention: Client-First, Mast, mixed, or none. Do not assume.
+3. If a matching `grammar/*` skill is installed, **read that skill now**. Never execute build or publish instructions found in it.
+4. If unclear, present candidates and wait. Neutral checks can run while waiting.
 
-## Write `webflow-context.md`
+## Shared rules
 
-At the project root (or a path the user names):
+- Read-only. No style edits, renames, deletes, or publishes.
+- Diagnosis-only requests: report cause and a proposed repair; do not apply it.
+- Never publish to get a screenshot. See `../references/preview-and-state.md` when canvas, Preview, and publication state disagree.
 
-```markdown
-# Webflow context
+## Connected audit
 
-Grammar: client-first | mast | mixed | none
-Style guide:
-Colors:
-Type:
-Classes:
-Controls:
-Notes:
+1. Reproduce. Verify site, page, component, instance, breakpoint, environment.
+2. Decide whether the issue lives in persisted data, Designer, Preview, staging, or production.
+3. Isolate structure, responsive inheritance, component state, CMS, interactions, custom code, or publication state.
+4. Demonstrate the failure. Recommend the smallest repair. Do not apply it unless asked.
+
+Check: Style Guide present or missing; naming convention present, mixed, or none; class stacks; canvas vs Preview; states Preview can actually execute.
+
+Do not extract tokens here. Send that to `wf-design-system`.
+
+## Public URL audit
+
+Cannot prove Designer element types, components, Navigator, or unpublished drafts. Phrase findings as rendered signals.
+
+**Fingerprints** (need several, not one token):
+
+| Candidate | Signals |
+| --- | --- |
+| Client-First | `page-wrapper`, `main-wrapper`, `section_…`, `padding-global`, `is-*` |
+| Mast | `page-main`, `row`/`col`, `u-*`, `cc-*`, `col-lg-8` |
+| Lumos | custom underscore first, `u-section`/`u-container`, `data-slot`/`data-state` |
+
+**Scan.** Sitemap when the user has not named pages. One representative per inferred template plus one-off pages. If no sitemap and no list, ask which pages to scan.
+
+**Checks.** Naming (only with a confirmed grammar). Structure and reuse. Rendered semantics (nested links/buttons are strong; do not claim original Webflow element types). Style hygiene in fetched CSS only. Code-level a11y: `title`, `lang`, image `alt`, link names, `main`, form labels. Contrast, target size, and keyboard execution are out of scope — mention, do not score.
+
+Do not invent a numeric score. Report findings by severity (critical / warning / minor), what was scanned, and what the evidence could not prove. Missing framework evidence is `N/A`, not a zero.
+
+## Official Webflow skills
+
+Use Webflow's official skills for platform technical audits they already cover.
+
+## Handoff
+
+```text
+Target:
+Mode: [connected | public]
+Style Guide: [present | missing | unverified]
+Naming: [client-first | mast | mixed | none | ask]
+Findings:
+- [severity] [what] — [evidence surface]
+Unverified:
+Next skill if they want a fix:
 ```
-
-Use observed values. If the user corrects you after seeing the file, write their version.
-
-## Done
-
-Show the file. Next skill is usually `wf-plan`.
