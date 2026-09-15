@@ -5,11 +5,20 @@ description: Connect a Webflow workspace to the current project via MCP. Use whe
 
 # Connect Webflow MCP
 
-Add a project-scoped Webflow MCP server so Claude can read and write to a specific Webflow workspace from this project directory.
+Add a project-scoped Webflow MCP server so this directory can read and write a specific Webflow workspace.
+
+Pi is the primary harness. Write the shared project file and the Cursor file. Do not stop after a Claude-only CLI add.
 
 ## How It Works
 
-Each project gets its own Webflow MCP server entry pointing at `https://mcp.webflow.com/mcp`. On first connection, Claude Code opens a browser for OAuth — user selects the target workspace. The token is stored per server name, so different projects can connect to different workspaces.
+Each project gets its own Webflow MCP server entry pointing at `https://mcp.webflow.com/mcp` (or the beta URL). On first connection the harness opens a browser for OAuth; the user selects the target workspace. Tokens are stored per server name, so different projects can connect to different workspaces.
+
+| File | Who reads it |
+|------|----------------|
+| `.mcp.json` | Pi (`pi-mcp-adapter`) and Claude Code project scope |
+| `.cursor/mcp.json` | Cursor only. Keep it local. |
+
+Pi does not load `.cursor/mcp.json` unless the user imports host configs. Cursor does not load `.mcp.json`. Write both.
 
 ## Setup Flow
 
@@ -19,59 +28,94 @@ Ask the user for a short identifier. Convention: `webflow-{client-or-project-nam
 
 Examples: `webflow-client-site`, `webflow-marketing-redesign`, `webflow-product-docs`
 
-### Step 2: Add the Server
+### Step 2: Choose Production or Beta
 
-Ask the user if they want to connect to the **production** or **beta** MCP server.
+Ask the user if they want **production** (default) or **beta**.
 
-**Production** (default):
+- Production: `https://mcp.webflow.com/mcp`
+- Beta: `https://mcp.webflow.com/beta/mcp` and name the server `webflow-{name}-beta`
+
+### Step 3: Write Both Configs
+
+Merge the server into existing files. Do not wipe other MCP servers.
+
+**`.mcp.json`** (Pi + Claude):
+
+```json
+{
+  "mcpServers": {
+    "webflow-{name}": {
+      "type": "http",
+      "url": "https://mcp.webflow.com/mcp"
+    }
+  }
+}
+```
+
+**`.cursor/mcp.json`** (Cursor): same `mcpServers` entry.
+
+If `.gitignore` exists, add `.cursor/mcp.json` when it is missing. Cursor MCP stays machine-local.
+
+`.mcp.json` contains no secrets. It may be committed. Do not require gitignoring it.
+
+Claude-only shortcut (writes `.mcp.json`, not Cursor):
+
 ```bash
 claude mcp add --transport http --scope project webflow-{name} https://mcp.webflow.com/mcp
 ```
 
-**Beta** (opt-in — newer features, may be less stable):
-```bash
-claude mcp add --transport http --scope project webflow-{name}-beta https://mcp.webflow.com/beta/mcp
-```
+If you use that shortcut, still write `.cursor/mcp.json`.
 
-This writes to `.mcp.json` in the project root. Remind the user to add `.mcp.json` to `.gitignore`.
+### Step 4: Authenticate
 
-### Step 3: Trigger OAuth
+The user selects the correct Webflow workspace in the browser.
 
-Claude Code should open a browser popup for OAuth automatically — either immediately or on the next session start. The user selects the correct Webflow workspace and authorizes.
+**Pi**
 
-If it doesn't trigger automatically:
-1. Try starting a **new session** (not resume) in this project directory
-2. If still stuck, remove and re-add: `claude mcp remove webflow-{name}` then re-add
-3. Check `claude mcp list` — should show "Connected" after successful auth
+- Restart the session in this project directory, or `/reload` after the file exists.
+- Open `/mcp` and connect `webflow-{name}`, or `/mcp-auth webflow-{name}`.
+- From an agent turn: `mcp({ action: "auth-start", server: "webflow-{name}" })`.
 
-### Step 4: Verify
+**Cursor**
 
-```bash
-claude mcp list
-```
+- Reload the window or reopen the project.
+- Approve the Webflow MCP server when Cursor prompts, or enable it under Cursor Settings → MCP.
+- Complete OAuth in the browser.
 
-Look for the server showing as connected. Tools appear as `mcp__webflow-{name}__*`.
+**Claude Code**
 
-Call `webflow_guide_tool` once to load the Webflow MCP capabilities index.
+- New session in this project directory (not resume).
+- If OAuth does not start: `claude mcp remove webflow-{name}` then re-add.
+- `claude mcp list` should show Connected.
+
+### Step 5: Verify
+
+Discover Webflow MCP tools in-session. Do not freeze tool names.
+
+Call the Webflow guide/index tool once if the server exposes one.
 
 ## Troubleshooting
 
-**"Needs authentication" after session restart:**
-- Try a completely fresh session (`claude` not `claude -c`)
-- Remove and re-add the server entry
-- Make sure a browser is available (won't work over SSH / headless)
+**Needs authentication after restart**
 
-**Wrong workspace selected:**
-- `claude mcp remove webflow-{name}` → re-add → re-auth with correct workspace
-- Each OAuth flow locks to one workspace; no way to switch without re-adding
+- Fresh session in this project directory.
+- Confirm the harness is reading the file you wrote (Pi: `.mcp.json`; Cursor: `.cursor/mcp.json`).
+- Re-auth. Tokens live in the OS credential store, keyed by server name.
 
-**Already have the managed `claude.ai Webflow` plugin:**
-- The managed connection and project-scoped servers are independent
-- Both can be active simultaneously (different workspaces)
-- The managed one is always global; project-scoped ones stay local to the directory
+**Wrong workspace**
+
+- Remove the server entry, re-add, re-auth. One OAuth flow locks to one workspace.
+
+**Pi cannot see a Cursor-only server**
+
+- Copy the entry into `.mcp.json`. Do not rely on host-config import for normal setup.
+
+**Already have Claude's managed Webflow plugin**
+
+- Independent of project-scoped servers. Both can be active.
 
 ## Notes
 
-- **One workspace per server entry.** Multiple workspaces = multiple server entries.
-- **`--scope project`** keeps the config in `.mcp.json` in the project root, not global config.
-- **Token persists in macOS Keychain** per server name — survives session restarts.
+- One workspace per server entry. Multiple workspaces = multiple entries.
+- Do not add a global Webflow MCP server for client work.
+- Codex is out of scope for this skill.

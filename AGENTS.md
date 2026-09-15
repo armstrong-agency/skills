@@ -12,7 +12,7 @@
 
 ## Working model
 
-- `wf-mcp-setup` — project-scoped MCP (Claude Code or Cursor, not Codex).
+- `wf-mcp-setup` — project-scoped MCP for Pi and Cursor (writes `.mcp.json` and `.cursor/mcp.json`). Claude Code can share `.mcp.json`. Not Codex.
 - `wf-audit` — read-only style guide / naming / connected-site check.
 - `wf-design-system` — token catalog → `DESIGN.md`; no Webflow writes.
 - `wf-plan` — talk through the job; no Webflow writes.
