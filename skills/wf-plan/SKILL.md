@@ -20,6 +20,8 @@ Do this before recommending a class name:
 
 **Style guide wins over framework on class names.** If they disagree, follow the style guide and flag it in the plan.
 
+Skim `references/common-issues.md` for MCP/Designer constraints that affect feasibility (nesting limits, variable scoping, component unlinking, Designer session state).
+
 ## Ask first
 
 1. **Where should this live?** Default recommendation: a new unpublished draft/sandbox page. Do not assume a live page.
@@ -62,7 +64,7 @@ No justification, no invent recommendation.
 
 ## Figma
 
-When Figma, a node, or a supplied screenshot is the approved source, read `../references/figma-to-webflow.md` before mapping. Calibrate screenshot scale. Do not treat a raster as CSS pixels until anchors agree.
+When Figma, a node, or a supplied screenshot is the approved source, calibrate screenshot scale before mapping. Do not treat a raster as CSS pixels until anchors agree. Node data can prove structure, text styles, variables, and measurements; a screenshot proves that capture only.
 
 ## Shared-component caution
 

@@ -22,7 +22,7 @@ Do this before assembling classes:
 
 ## Discover tools, then act
 
-Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Notes in `../references/headless-quirks.md` are dated — revalidate a named action before depending on it.
+Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `references/common-issues.md` for combo attachment, nesting, Designer session, and related MCP quirks.
 
 ## Destination
 
@@ -55,8 +55,6 @@ When the system cannot produce the requested result, stop and describe the missi
 ## Native styling still applies
 
 Use Designer-native Style panel fields (or MCP properties that map to them). Do not invent unsupported CSS, one-off custom properties for Height/Width/Margin/Padding/Display/Position/Background, or Custom Code / page `<style>` / Global Canvas CSS dumps for presentation.
-
-See `../references/native-styling.md`.
 
 ## Structure habits
 

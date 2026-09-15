@@ -26,7 +26,7 @@ The user names one or more. State which source is authoritative for each claim. 
 
 **Public URL.** Normalize, follow redirects, respect `robots.txt`. Prefer a sitemap. Render unique static pages plus one representative per template (cap 20 pages; without a sitemap, depth 2 and at most 100 URLs). Computed styles at desktop, tablet, mobile landscape, and mobile portrait are the evidence of record. Do not authenticate or bypass bot protection.
 
-**Figma.** Resolve file, node, and viewport. Node data can prove structure, text styles, variables, and measurements. A screenshot proves that capture only. Read `../references/figma-to-webflow.md` before treating pixels as CSS.
+**Figma.** Resolve file, node, and viewport. Node data can prove structure, text styles, variables, and measurements. A screenshot proves that capture only. Calibrate screenshot scale; do not treat a raster as CSS pixels until anchors agree.
 
 **Existing Webflow.** Inspect the Style Guide, variables, modes, tags, and foundation classes. Prefer existing names. Record names and IDs in the catalog only — a connected site does not authorize writes.
 

@@ -22,7 +22,7 @@ Do this before naming or creating a class:
 
 ## Discover tools, then act
 
-Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Notes in `../references/headless-quirks.md` are dated — revalidate a named action before depending on it.
+Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `references/common-issues.md` for combo attachment, nesting, Designer session, variable scoping, and publishing quirks.
 
 ## Destination and confirmation
 
@@ -56,8 +56,6 @@ Use Designer-native Style panel fields (or MCP style properties that map to them
 Never invent CSS Webflow cannot set. Do not use Custom Code embeds, page `<style>`, or Global Canvas CSS to work around Designer restrictions. If Designer cannot set it, approximate with supported tools or tell the user it is unavailable natively.
 
 Custom code is only for behavior Webflow cannot express, never for presentation. Variables are reusable system tokens, not a backdoor for one-off values native fields already accept.
-
-See `../references/native-styling.md`.
 
 ## Hard structure rules
 
@@ -140,7 +138,7 @@ Do not present work as complete until the relevant checks have been performed. I
 - Shared definitions and unrelated instances remain intact
 - Navigator, semantics, and class stacks are understandable
 - Legacy and replacement implementations are not both running
-- Native Style panel only (see `../references/native-styling.md`)
+- Native Style panel only
 - No unsupported CSS, one-off custom properties for native fields, or embed/CSS dumps
 
 ### Visual, interaction, evidence
@@ -151,7 +149,7 @@ Do not present work as complete until the relevant checks have been performed. I
 - Saved draft, staging, Webflow subdomain, and production are distinguished
 - Publication only when explicitly requested
 
-See `../references/preview-and-state.md` when visual, custom-code, or publication evidence matters. See `../references/headless-quirks.md` for MCP edge cases. See `../references/platform-facts.md` for verified platform limits.
+See `references/common-issues.md` when canvas, Preview, publication state, MCP, or platform limits matter.
 
 ## Handoff
 

@@ -27,7 +27,7 @@ Do this before judging names:
 
 - Read-only. No style edits, renames, deletes, or publishes.
 - Diagnosis-only requests: report cause and a proposed repair; do not apply it.
-- Never publish to get a screenshot. See `../references/preview-and-state.md` when canvas, Preview, and publication state disagree.
+- Never publish to get a screenshot. See `references/common-issues.md` when canvas, Preview, and publication state disagree.
 
 ## Connected audit
 
