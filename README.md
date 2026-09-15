@@ -14,10 +14,11 @@ skills/                    Active tools (Agent Skills)
   wf-plan/                 Scope, reuse, destination — then stop
   wf-prototype/            Assemble on an unpublished draft page
   wf-build/                Implement in Webflow, one section at a time
+  */references/            Packaged copy of shared quirks when that skill cites them
 framework-grammar/         Not skills — naming lookups the tools read
   client-first.md
   mast.md
-references/                Shared MCP/Designer footguns
+references/                Shared MCP/Designer footguns (edit here, copy into skills)
 ```
 
 Each skill is **version 0.1.0, work in progress**.

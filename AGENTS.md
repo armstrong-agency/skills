@@ -2,7 +2,7 @@
 
 - Keep published skills compatible with the open Agent Skills format (`skills/*/SKILL.md`).
 - `framework-grammar/` is not a skill. Skills read those files for class names. Don't copy workflow into grammar.
-- Each skill is one `SKILL.md`. Don't add per-skill reference folders. ONE shared repo-root `references/` for cross-skill operational quirks (e.g. `references/common-issues.md`) is allowed.
+- Each skill is one `SKILL.md` plus only the files that skill must ship. Author shared MCP/Designer quirks in repo-root `references/common-issues.md`. Workflow skills that cite it must include an identical copy at `skills/<name>/references/common-issues.md` so a Skilldeck or `npx skills` install stays self-contained.
 - Instructions only. No required scripts or crawler dependencies.
 - Discover Webflow MCP tool names in-session. Don't freeze tool names here; official Webflow MCP docs cover mechanics.
 - First step of any skill that names classes: identify the convention and read `framework-grammar/client-first.md` or `mast.md`.
