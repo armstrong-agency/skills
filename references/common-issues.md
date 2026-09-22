@@ -44,6 +44,7 @@ Keep this file short. Add a bullet only after it burned real time on a job. No c
 - Large nested creates get truncated. Several medium writes beat one giant one.
 - Discover Webflow MCP tool names in-session. Don't hardcode names from memory or old docs.
 - Webflow native Tab elements sometimes have issues adding new tabs. Either add a fresh tab item and restyle + add content, or ask the user for help; do not duplicate an exisiting tab item.
+- Designer's Gap control reads `grid-column-gap` / `grid-row-gap`, not modern `column-gap` / `row-gap`. Writing only the modern properties applies spacing but leaves Designer's Gap field empty. If spacing is visible but Gap looks unset, check which properties are active and write to the Designer-facing ones.
 
 
 
