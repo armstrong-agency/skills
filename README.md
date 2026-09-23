@@ -8,7 +8,8 @@ These complement [Webflow's official skills](https://github.com/webflow/webflow-
 
 ```text
 skills/                    Active tools (Agent Skills)
-  wf-mcp-setup/            Connect MCP (Claude Code or Cursor, not Codex)
+  wf-mcp-setup/            Connect MCP (Pi, Claude Code, Cursor local + Cloud; not Codex)
+    references/            cursor-local.md, cursor-cloud.md (Cursor surfaces differ)
   wf-audit/                Read-only site/style-guide/naming check
   wf-design-system/        Token catalog → DESIGN.md (no Webflow writes)
   wf-plan/                 Scope, reuse, destination — then stop
@@ -27,7 +28,9 @@ Each skill is **version 0.1.0, work in progress**.
 
 ### `wf-mcp-setup`
 
-Project-scoped Webflow MCP so each repo keeps its own workspace authorization. Claude Code and Cursor. Not Codex.
+Project-scoped Webflow MCP so each repo keeps its own workspace authorization. Pi, Claude Code, and Cursor. Not Codex.
+
+**Cursor local and Cursor Cloud Agents are separate.** Local uses `.cursor/mcp.json`. Cloud does not load project MCP files — register HTTP MCP on [cursor.com/agents](https://cursor.com/agents) (`+` → MCP Servers → Add MCP). See `skills/wf-mcp-setup/references/cursor-local.md` and `cursor-cloud.md`.
 
 ### `wf-audit`
 

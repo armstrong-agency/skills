@@ -12,7 +12,7 @@
 
 ## Working model
 
-- `wf-mcp-setup` — project-scoped MCP for Pi and Cursor (writes `.mcp.json` and `.cursor/mcp.json`). Claude Code can share `.mcp.json`. Not Codex.
+- `wf-mcp-setup` — project-scoped MCP for Pi, Claude Code, and Cursor. Writes `.mcp.json` for Pi/Claude; Cursor **local** uses `.cursor/mcp.json` (`references/cursor-local.md`); Cursor **Cloud Agents** use Agents UI / Team MCP Servers (`references/cursor-cloud.md`) — Cloud does not load project MCP JSON. Not Codex.
 - `wf-audit` — read-only style guide / naming / connected-site check.
 - `wf-design-system` — token catalog → `DESIGN.md`; no Webflow writes.
 - `wf-plan` — talk through the job; no Webflow writes.
