@@ -9,6 +9,8 @@ Implement in Webflow with deliberate reuse, native Designer styling, and gates t
 
 Use Webflow's official skills for platform operations (MCP tool mechanics, publishing workflows, CMS operations, technical audits). This skill is implementation judgment.
 
+If this build runs through a long-lived coding agent (a cloud or local worker), follow references/agent-runs.md for briefing, the turn budget, the handoff file and scoped reads.
+
 ## Grammar first
 
 Do this before naming or creating a class:
