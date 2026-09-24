@@ -61,6 +61,13 @@ Keep this file short. Add a bullet only after it burned real time on a job. No c
 
 
 
+## Retries, tree dumps and hung commands inflate agent runs
+
+Symptom: a run spends many calls on validation-error retries, whole element or style trees come back into context, or a render command hangs until the harness timeout.
+Fix: read the tool's input schema before the first call and record the working shape. Read by ID or name, scoped to the section root. Put a timeout on every render or terminal command. See wf-build/references/agent-runs.md.
+
+
+
 ## Criteria to add to this file
 
 1. A mistake cost real time on a real job.
