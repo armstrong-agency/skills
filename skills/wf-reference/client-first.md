@@ -30,9 +30,11 @@ page-wrapper
 
 `padding-global` and `padding-section-[size]` are **two utility classes on the same Div** — not a combo class. Container sits inside that Div. Section root is `section_[identifier]`. Component root is `[folder]_component`.
 
+Every section has `padding-section-[size]`, full-height sections included. For a full-height hero, set the height (for example `min-height: 100vh`) on a wrapper inside the section and keep the section padding, so content never touches the top or bottom edge on short screens.
+
 Each wrapper needs a job (layout, size, position, overflow, group). Skip empty ones. Prefer nested layers over stacking many unrelated utilities on one element ([Classes strategy 2](https://finsweet.com/client-first/docs/classes-strategy-2)).
 
-▎ Spacing utilities (margin-*, padding-*, spacers): use the Client-First spacing system. Spacing strategy (https://finsweet.com/client-first/docs/spacing-strategy). There is more than one valid strategy for the space between content blocks: spacer-* elements between blocks, or margin-* utilities on the blocks. Follow what the project's existing pages already do. If there's no precedent, ask the user which they prefer. In a non-interactive run, use padding-* and note the choice in the handoff.
+Spacing utilities (`margin-*`, `padding-*`, spacers): use the Client-First spacing system. [Spacing strategy](https://finsweet.com/client-first/docs/spacing-strategy). There is more than one valid strategy for the space between content blocks: `spacer-*` elements between blocks, or `margin-*` utilities on the blocks. Follow what the project's existing pages already do. If there's no precedent, ask the user which they prefer. In a non-interactive run, use `padding-*` and note the choice in the handoff.
 
 ## Classes
 
@@ -67,6 +69,8 @@ Use when the project has a Variables panel set up.
 2. **Semantics** — purpose names that point at primitives in the same collection (for example Text / Primary).
 
 Bind styles to **semantics**. Don't use primitives on elements unless the project has no semantics yet.
+
+Every color uses a variable, with one exception: alpha values of pure black or white (for example `rgba(0, 0, 0, 0.4)`) used as an overlay, gradient, scrim, or shadow may stay a raw value. Don't create a variable just for one overlay. Any opaque or tinted color — text, backgrounds, borders, brand colors — binds to a semantic variable.
 
 For structure and spacing, prefer Client-First utility classes (`padding-global`, `padding-section-*`, `spacer-*`, and the rest). Don't invent spacing or layout variables when a utility already covers it.
 
