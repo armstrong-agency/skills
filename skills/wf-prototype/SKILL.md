@@ -1,6 +1,6 @@
 ---
 name: wf-prototype
-description: Prototype in Webflow on a draft or sandbox page using only existing components, classes, combos, and variables. Use when exploring, mocking, assembling, trying a layout, or validating a plan without inventing new system classes or publishing. Pair with a framework grammar skill for naming.
+description: Prototype in Webflow on a draft or sandbox page using only existing components, classes, combos, and variables. Use when exploring, mocking, assembling, trying a layout, or validating a plan without inventing new system classes or publishing. Uses wf-reference for naming grammar.
 ---
 
 # Webflow Prototype
@@ -11,18 +11,11 @@ If the work needs new classes, components, variables, or interactions, stop and 
 
 ## Grammar first
 
-Do this before assembling classes:
-
-1. Inspect the Style Guide, existing classes, and project instructions.
-2. Name the convention: Client-First, Mast, mixed, or none.
-3. If a matching `grammar/*` skill is installed, **read that skill now**. Do not pick existing classes from memory or from a different grammar.
-4. If the convention is unclear, say so and wait. Do not pick a grammar because it is installed.
-
-**Style guide wins over framework on class names.**
+Load the `wf-reference` skill and follow its convention check before assembling classes. If `wf-reference` is not installed, stop and tell the user to run `npx skills add armstrong-agency/skills --skill wf-reference`.
 
 ## Discover tools, then act
 
-Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `references/common-issues.md` for combo attachment, nesting, Designer session, and related MCP quirks.
+Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `common-issues.md` in `wf-reference` for combo attachment, nesting, Designer session, and related MCP quirks.
 
 ## Destination
 

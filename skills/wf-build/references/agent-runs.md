@@ -5,7 +5,7 @@ Use this when a Webflow build runs as a long-lived agent (a cloud VM or a local 
 ## Before launch (whoever briefs the agent)
 - Resolve IDs first: site, page, section root element, components, design-source nodes. The agent should never have to search for them.
 - List what is frozen and must not change, and what the agent is allowed to edit.
-- Write acceptance checks as numbers (heights, gaps, widths, contrast) at 1920, 991, 768 and 390.
+- Write acceptance checks as numbers (heights, gaps, widths, contrast) at 1920, 991, 767 and 390 px (desktop, tablet, mobile landscape, mobile portrait).
 - Scope: one section per agent, or two if they are small and share components.
 - Say whether the agent may publish, and to which target. The default is no publish.
 

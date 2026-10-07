@@ -1,6 +1,6 @@
 ---
 name: wf-mcp-setup
-description: Connect a Webflow workspace to the current project via MCP. Use when starting a Webflow client project, troubleshooting Webflow MCP auth, or the user says "connect webflow", "add webflow", "webflow mcp", or needs Cursor Cloud vs local MCP setup.
+description: Connect a Webflow workspace to the current project via MCP. Use when starting a Webflow client project, troubleshooting Webflow MCP auth, or the user says "connect webflow", "add webflow", "webflow mcp", or needs Webflow MCP set up for a specific agent harness or cloud agent surface.
 ---
 
 # Connect Webflow MCP
@@ -9,21 +9,7 @@ Add a project-scoped Webflow MCP server so this directory can read and write a s
 
 Official endpoint: `https://mcp.webflow.com/mcp` (or beta). OAuth tokens are keyed by **server name**, so different projects can use different workspaces without sharing one global Webflow login.
 
-Pi is the primary harness for repo files. Always write the shared project file when touching configs. For Cursor, follow the correct surface — **local IDE and Cloud Agents are separate**.
-
-## Cursor local vs Cursor Cloud (read first)
-
-| | **Cursor local** (desktop IDE) | **Cursor Cloud Agents** |
-|--|--|--|
-| Runs | On your machine | Isolated VM / [cursor.com/agents](https://cursor.com/agents) |
-| MCP config | `.cursor/mcp.json` | Cloud Agents MCP UI (and optional Team MCP Servers) |
-| Loads `.mcp.json`? | No | No |
-| Loads `.cursor/mcp.json`? | Yes | No |
-| Setup file | [references/cursor-local.md](references/cursor-local.md) | [references/cursor-cloud.md](references/cursor-cloud.md) |
-
-Configuring one does **not** configure the other. If the user says “Cloud” / “cloud agent”, use the Cloud setup file only. If they are in the desktop app on a folder, use the local setup file.
-
-**Never** tell a Cloud user that Dashboard → Plugins & MCPs → **Add** is how to add a custom HTTP MCP — that button opens the Marketplace.
+Do not assume which harness the user runs. Ask, or detect it from the session and the project's existing config files. A project can be used from more than one harness, and each one needs its own registration.
 
 ## Setup Flow
 
@@ -40,19 +26,21 @@ Ask **production** (default) or **beta**.
 - Production: `https://mcp.webflow.com/mcp`
 - Beta: `https://mcp.webflow.com/beta/mcp` and name the server `webflow-{name}-beta`
 
-### Step 3: Choose harness / surface
+### Step 3: Identify the harnesses
 
-Ask which surfaces need Webflow for this project (one or more):
+List every harness or surface that needs Webflow for this project. For each one, find where it reads **project-scoped** MCP config: check its docs or CLI help rather than assuming. If a harness has a file below, follow it instead of the generic steps; these surfaces are easy to get wrong:
 
-| Surface | What to do |
-|--|--|
-| Pi / Claude Code | Write `.mcp.json` (below), then auth |
-| Cursor **local** | Follow [references/cursor-local.md](references/cursor-local.md) |
-| Cursor **Cloud Agents** | Follow [references/cursor-cloud.md](references/cursor-cloud.md) |
+- Codex (desktop app, CLI, IDE extension): [references/codex.md](references/codex.md)
+- Cursor desktop IDE: [references/cursor-local.md](references/cursor-local.md)
+- Cursor Cloud Agents: [references/cursor-cloud.md](references/cursor-cloud.md)
 
-### Step 4: Write `.mcp.json` (Pi + Claude; document intended name)
+Local and cloud surfaces of the same product are often separate. Configuring one does not configure the other.
 
-Merge into existing files. Do not wipe other MCP servers.
+### Step 4: Write the server entry
+
+Write the same entry everywhere it is needed. Merge into existing files; do not wipe other MCP servers.
+
+`.mcp.json` at the project root is the most widely shared format. Write it whenever any harness in use reads it:
 
 ```json
 {
@@ -67,31 +55,15 @@ Merge into existing files. Do not wipe other MCP servers.
 
 `.mcp.json` contains no secrets. It may be committed. Do not require gitignoring it.
 
-Claude-only shortcut (still write Cursor local/Cloud per their files if needed):
+For a harness that uses its own file or format, translate the same name, transport (Streamable HTTP), and URL into that file. If the harness has a CLI command that adds a project-scoped HTTP server, prefer it, then confirm the file it wrote.
 
-```bash
-claude mcp add --transport http --scope project webflow-{name} https://mcp.webflow.com/mcp
-```
+Transport must be Streamable HTTP. Do not use SSE. Use a local proxy such as `mcp-remote` only where a harness file calls for it.
 
-### Step 5: Authenticate (per surface)
+### Step 5: Authenticate
 
-The user selects the correct Webflow workspace in the browser.
+Start a fresh session in this project directory so the harness loads the new config, then connect `webflow-{name}` through the harness's MCP connection flow. The user selects the correct Webflow workspace in the browser.
 
-**Pi**
-
-- Restart the session in this project directory, or `/reload` after the file exists.
-- Open `/mcp` and connect `webflow-{name}`, or `/mcp-auth webflow-{name}`.
-- From an agent turn: `mcp({ action: "auth-start", server: "webflow-{name}" })`.
-
-**Claude Code**
-
-- New session in this project directory (not resume).
-- If OAuth does not start: `claude mcp remove webflow-{name}` then re-add.
-- `claude mcp list` should show Connected.
-
-**Cursor local** — [references/cursor-local.md](references/cursor-local.md)
-
-**Cursor Cloud Agents** — [references/cursor-cloud.md](references/cursor-cloud.md)
+Desktop OAuth does not authorize cloud agent surfaces. Authenticate each surface on its own.
 
 ### Step 6: Verify
 
@@ -103,33 +75,23 @@ Call the Webflow guide/index tool once if the server exposes one. Prefer listing
 
 **Needs authentication after restart**
 
-- Fresh session in this project directory (local/Pi/Claude).
-- Confirm the harness is reading the right config (Pi/Claude: `.mcp.json`; Cursor local: `.cursor/mcp.json`; Cloud: Agents MCP UI).
-- Re-auth. Tokens are keyed by server name.
+- Fresh session in this project directory, not a resumed one.
+- Confirm the harness is reading the file you wrote.
+- Re-auth. Tokens are keyed by server name. If OAuth never starts, remove the server entry, re-add it, and retry.
 
 **Wrong workspace**
 
 - Remove the server entry, re-add, re-auth. One OAuth flow locks to one workspace.
 
-**Pi cannot see a Cursor-only server**
+**Works in one harness but not another**
 
-- Copy the entry into `.mcp.json`. Do not rely on host-config import for normal setup.
+- Expected until each one is configured. Harnesses and surfaces do not share MCP registration. Copy the entry into the file the missing one reads.
 
-**Local Cursor works but Cloud does not (or the reverse)**
+**Already have a managed or account-level Webflow connector**
 
-- Expected until both surfaces are configured. They do not share MCP registration. Use the matching setup file.
-
-**Already have Claude's managed Webflow plugin**
-
-- Independent of project-scoped servers. Both can be active.
-
-**Leftover broker / non-Webflow HTTP MCP**
-
-- Disable or remove it. Do not authenticate abandoned broker hosts. Project work uses `webflow-{name}` → `https://mcp.webflow.com/mcp` only.
+- Independent of project-scoped servers. Both can be active. Use the project-scoped server for client work so the workspace stays pinned to the project.
 
 ## Notes
 
 - One workspace per server entry. Multiple workspaces = multiple entries.
 - Do not add a single global Webflow MCP server for all client work.
-- Codex is out of scope for this skill.
-- Do not put private site IDs, screenshots, or tokens in this public skills repo.

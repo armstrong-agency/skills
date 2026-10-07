@@ -34,15 +34,13 @@ Local IDE MCP does **not** automatically enable Cloud Agents. Set Cloud up separ
 }
 ```
 
-2. If `.gitignore` exists, ensure `.cursor/mcp.json` is listed. Keep this file machine-local; do not commit it.
+2. Also write the same entry to **`.mcp.json`** when other harnesses that read it share the repo (see parent skill). `.mcp.json` has no secrets and may be committed.
 
-3. Also write the same entry to **`.mcp.json`** when Pi or Claude Code share the repo (see parent skill). `.mcp.json` has no secrets and may be committed.
+3. Reload the Cursor window or reopen the project.
 
-4. Reload the Cursor window or reopen the project.
+4. Approve / enable the server when prompted, or under **Cursor Settings → MCP** / **Customize → MCP**.
 
-5. Approve / enable the server when prompted, or under **Cursor Settings → MCP** / **Customize → MCP**.
-
-6. Complete OAuth in the browser. Select the **correct Webflow workspace** for this project.
+5. Complete OAuth in the browser. Select the **correct Webflow workspace** for this project.
 
 ## Verify
 

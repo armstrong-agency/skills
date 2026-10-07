@@ -1,23 +1,34 @@
 # Repository guidance
 
-- Keep published skills compatible with the open Agent Skills format (`skills/*/SKILL.md`).
-- `framework-grammar/` is not a skill. Skills read those files for class names. Don't copy workflow into grammar.
-- Each skill is one `SKILL.md` plus only the files that skill must ship. Author shared MCP/Designer quirks in repo-root `references/common-issues.md`. Workflow skills that cite it must include an identical copy at `skills/<name>/references/common-issues.md` so a Skilldeck or `npx skills` install stays self-contained.
+Rules for anyone, human or agent, changing this repository. The skill list is in [README.md](README.md).
+
+## Structure
+
+- Keep skills compatible with the open Agent Skills format (`skills/<name>/SKILL.md`).
+- Each skill is one `SKILL.md` plus only the files that skill must ship.
+- Shared material (framework grammar, MCP/Designer quirks) lives once, in `wf-reference`. Never copy it into another skill. Skills that need it load `wf-reference` and stop with the install command if it is missing.
+- First step of any skill that names classes: load `wf-reference` and follow its convention check.
 - Instructions only. No required scripts or crawler dependencies.
-- Discover Webflow MCP tool names in-session. Don't freeze tool names here; official Webflow MCP docs cover mechanics.
-- First step of any skill that names classes: identify the convention and read `framework-grammar/client-first.md` or `mast.md`.
+
+## Content
+
+- Discover Webflow MCP tool names in-session. Don't freeze tool names; official Webflow MCP docs cover mechanics.
 - Never publish a Webflow site from these skills unless the user explicitly asks.
-- Never include private client screenshots, extracted tokens, site IDs, or evaluation artifacts in this public repository.
-- Original material is CC0. Link to third-party docs rather than copying substantial third-party text.
+- Keep workflow out of grammar files. A grammar file describes naming and structure for one convention.
+- Link to third-party docs rather than copying substantial third-party text.
 
-## Working model
+## Adding to `common-issues.md`
 
-- `wf-mcp-setup` — project-scoped MCP for Pi, Claude Code, and Cursor. Writes `.mcp.json` for Pi/Claude; Cursor **local** uses `.cursor/mcp.json` (`references/cursor-local.md`); Cursor **Cloud Agents** use Agents UI / Team MCP Servers (`references/cursor-cloud.md`) — Cloud does not load project MCP JSON. Not Codex.
-- `wf-audit` — read-only style guide / naming / connected-site check.
-- `wf-design-system` — token catalog → `DESIGN.md`; no Webflow writes.
-- `wf-plan` — talk through the job; no Webflow writes.
-- `wf-prototype` — assemble on an unpublished draft page; existing classes only.
-- `wf-build` — implement in Webflow, one section at a time.
-- `framework-grammar/` — Client-First and Mast naming.
-- `references/` — shared MCP/Designer footguns.
-- Official Webflow skills remain complementary for platform operations.
+Add a bullet only when:
+
+1. The mistake cost real time on a real job.
+2. It is about platform, MCP, or Designer behavior, not one site's design system.
+3. It fits in one short bullet. Link to official docs when they exist.
+
+## Privacy
+
+This repository is public. Never include client names, screenshots, extracted tokens, site IDs, or evaluation artifacts.
+
+## License
+
+Original material is CC0.

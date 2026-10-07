@@ -1,6 +1,6 @@
 ---
 name: wf-build
-description: Implement Webflow work with the reuse ladder, native Designer styling, confirmation gates, and completion evidence. Use when building pages, creating justified new classes or components, promoting approved sandbox work, or making system decisions. Pair with a framework grammar skill for naming. Never publish unless the user explicitly asks.
+description: Implement Webflow work with the reuse ladder, native Designer styling, confirmation gates, and completion evidence. Use when building pages, creating justified new classes or components, promoting approved sandbox work, or making system decisions. Uses wf-reference for naming grammar. Never publish unless the user explicitly asks.
 ---
 
 # Webflow Build
@@ -9,22 +9,15 @@ Implement in Webflow with deliberate reuse, native Designer styling, and gates t
 
 Use Webflow's official skills for platform operations (MCP tool mechanics, publishing workflows, CMS operations, technical audits). This skill is implementation judgment.
 
-If this build runs through a long-lived coding agent (a cloud or local worker), follow references/agent-runs.md for briefing, the turn budget, the handoff file and scoped reads.
+If this build runs through a long-lived coding agent (a cloud or local worker), follow [references/agent-runs.md](references/agent-runs.md) for briefing, the turn budget, the handoff file and scoped reads.
 
 ## Grammar first
 
-Do this before naming or creating a class:
-
-1. Inspect the Style Guide, existing classes, and project instructions.
-2. Name the convention: Client-First, Mast, mixed, or none.
-3. If a matching `grammar/*` skill is installed, **read that skill now**. Do not write class names from memory or from a different grammar.
-4. If the convention is unclear, say so and wait. Do not pick a grammar because it is installed.
-
-**Style guide wins over framework on class names.** If they disagree, follow the style guide and notify the user.
+Load the `wf-reference` skill and follow its convention check before naming or creating a class. If `wf-reference` is not installed, stop and tell the user to run `npx skills add armstrong-agency/skills --skill wf-reference`.
 
 ## Discover tools, then act
 
-Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `references/common-issues.md` for combo attachment, nesting, Designer session, variable scoping, and publishing quirks.
+Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `common-issues.md` in `wf-reference` for combo attachment, nesting, Designer session, variable scoping, and publishing quirks.
 
 ## Destination and confirmation
 
@@ -46,7 +39,7 @@ Before creating anything:
 1. **Existing component** — use a component that already owns the responsibility
 2. **Existing class** — use a global or project class
 3. **Combo class** on an existing class
-4. **New class** — only when justified, named to the style guide or loaded grammar
+4. **New class** — only when justified, named to the style guide or grammar
 5. **Custom code** — last resort, only for behavior Webflow cannot express
 
 Write the justification in the section plan before building a new class. Confirm a utility or existing pattern cannot do it.
@@ -134,7 +127,7 @@ Do not present work as complete until the relevant checks have been performed. I
 
 ### Structure and system
 
-- Grammar skill was loaded; style guide followed on names
+- `wf-reference` grammar was read; style guide followed on names
 - Existing system used wherever suitable
 - Every new class, variable, component, variant, slot, or behavior has a distinct responsibility
 - Shared definitions and unrelated instances remain intact
@@ -151,7 +144,7 @@ Do not present work as complete until the relevant checks have been performed. I
 - Saved draft, staging, Webflow subdomain, and production are distinguished
 - Publication only when explicitly requested
 
-See `references/common-issues.md` when canvas, Preview, publication state, MCP, or platform limits matter.
+See `common-issues.md` in `wf-reference` when canvas, Preview, publication state, MCP, or platform limits matter.
 
 ## Handoff
 

@@ -1,6 +1,6 @@
 ---
 name: wf-design-system
-description: Catalog design tokens from a public URL, Figma, or existing Webflow site into a markdown file (default DESIGN.md) — colors, fonts, type, spacing, radii, buttons, forms, and control states. Use when the user asks for a style guide, tokens, type scale, or design system. Pair with a grammar skill for naming. Write the markdown catalog only; do not write to Webflow or publish. Use wf-audit to check whether a Style Guide or naming convention already exists.
+description: Catalog design tokens from a public URL, Figma, or existing Webflow site into a markdown file (default DESIGN.md) — colors, fonts, type, spacing, radii, buttons, forms, and control states. Use when the user asks for a style guide, tokens, type scale, or design system. Uses wf-reference for naming grammar. Write the markdown catalog only; do not write to Webflow or publish. Use wf-audit to check whether a Style Guide or naming convention already exists.
 ---
 
 # Webflow Design System
@@ -13,12 +13,9 @@ Use `wf-audit` to check whether a Style Guide or naming convention already exist
 
 ## Grammar first
 
-Do this before proposing token or class names in the catalog:
+Load the `wf-reference` skill and follow its convention check before proposing token or class names in the catalog. If `wf-reference` is not installed, stop and tell the user to run `npx skills add armstrong-agency/skills --skill wf-reference`.
 
-1. Inspect the source Style Guide, existing classes, or project instructions.
-2. Name the convention: Client-First, Mast, mixed, or none.
-3. If a matching `grammar/*` skill is installed, **read that skill now**. This skill records values and roles; grammar records how they would appear as classes.
-4. If the convention is unclear, say so in Notes. Do not pick a grammar because it is installed.
+This skill records values and roles; grammar records how they would appear as classes. If the convention is unclear, say so in Notes instead of waiting.
 
 ## Sources
 

@@ -1,6 +1,6 @@
 ---
 name: wf-plan
-description: Plan Webflow work before writing — page and section inventory, reuse discovery, Figma mapping, and written justifications for anything new. Use whenever the user asks to plan, map, estimate, scope, or figure out how to build in Webflow before implementation. Pair with a framework grammar skill for naming. Do not mutate the site from this skill.
+description: Plan Webflow work before writing — page and section inventory, reuse discovery, Figma mapping, and written justifications for anything new. Use whenever the user asks to plan, map, estimate, scope, or figure out how to build in Webflow before implementation. Uses wf-reference for naming grammar. Do not mutate the site from this skill.
 ---
 
 # Webflow Plan
@@ -11,16 +11,11 @@ Use `wf-prototype` or `wf-build` only after the plan is approved.
 
 ## Grammar first
 
-Do this before recommending a class name:
+Load the `wf-reference` skill and follow its convention check before recommending a class name. If `wf-reference` is not installed, stop and tell the user to run `npx skills add armstrong-agency/skills --skill wf-reference`.
 
-1. Inspect the Style Guide, existing classes, and project instructions.
-2. Name the convention: Client-First, Mast, mixed, or none.
-3. If a matching `grammar/*` skill is installed, **read that skill now**. Do not write class names from memory or from a different grammar.
-4. If the convention is unclear, say so and wait. Do not pick a grammar because it is installed.
+If the style guide and framework disagree, flag it in the plan.
 
-**Style guide wins over framework on class names.** If they disagree, follow the style guide and flag it in the plan.
-
-Skim `references/common-issues.md` for MCP/Designer constraints that affect feasibility (nesting limits, variable scoping, component unlinking, Designer session state).
+Skim `common-issues.md` in `wf-reference` for MCP/Designer constraints that affect feasibility (nesting limits, variable scoping, component unlinking, Designer session state).
 
 ## Ask first
 
@@ -57,7 +52,7 @@ If a new class, combo, component, variable, or interaction is needed, write the 
 
 - what existing piece was considered and why it fails
 - the distinct responsibility of the new piece
-- proposed name using the grammar skill already loaded
+- proposed name using the grammar already read
 - where it will be prototyped (draft/sandbox) before any live page
 
 No justification, no invent recommendation.

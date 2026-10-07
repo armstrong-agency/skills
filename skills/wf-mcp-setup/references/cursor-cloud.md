@@ -12,7 +12,7 @@ Use this when the agent runs as a **Cursor Cloud Agent** (browser / `cursor.com/
 | Tool calls | Proxied by Cursor backend (HTTP recommended) | App talks to the MCP server directly |
 | Custom HTTP add | Agents home `+` → MCP Servers → Add MCP | Write JSON + reload |
 
-Committing `.mcp.json` helps Pi / Claude Code and documents the intended server name. It does **not** turn on Cloud MCP by itself.
+Committing `.mcp.json` helps harnesses that read it and documents the intended server name. It does **not** turn on Cloud MCP by itself.
 
 ## Prerequisites
 
@@ -58,5 +58,4 @@ Committing `.mcp.json` helps Pi / Claude Code and documents the intended server 
 - **Only marketplace after Add** — you used Plugins & MCPs → Add. Use Agents `+` → MCP Servers → Add MCP instead.
 - **Tools missing on a Cloud run** — personal/team Cloud MCP not enabled for that account; project JSON files are ignored.
 - **Wrong workspace** — remove/disable the Cloud MCP entry, re-add, re-auth.
-- **Dead broker / leftover HTTP MCP** — disable or remove it. Do not authenticate abandoned broker hosts. Use only `webflow-{name}` → `https://mcp.webflow.com/mcp`.
 - **Local works, Cloud does not** — expected until this Cloud setup is done. Follow this file, not [cursor-local.md](cursor-local.md).
