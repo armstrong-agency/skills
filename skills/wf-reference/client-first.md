@@ -32,7 +32,7 @@ page-wrapper
 
 Each wrapper needs a job (layout, size, position, overflow, group). Skip empty ones. Prefer nested layers over stacking many unrelated utilities on one element ([Classes strategy 2](https://finsweet.com/client-first/docs/classes-strategy-2)).
 
-Spacing utilities (`margin-*`, `padding-*`, spacers): use the Client-First spacing system. [Spacing strategy](https://finsweet.com/client-first/docs/spacing-strategy).
+▎ Spacing utilities (margin-*, padding-*, spacers): use the Client-First spacing system. Spacing strategy (https://finsweet.com/client-first/docs/spacing-strategy). There is more than one valid strategy for the space between content blocks: spacer-* elements between blocks, or margin-* utilities on the blocks. Follow what the project's existing pages already do. If there's no precedent, ask the user which they prefer. In a non-interactive run, use padding-* and note the choice in the handoff.
 
 ## Classes
 
