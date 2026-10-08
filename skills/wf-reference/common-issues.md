@@ -13,6 +13,7 @@ Known Webflow MCP and Designer behavior that costs time if you don't expect it. 
 - Put text on headings, paragraphs, and text links. A generic Div is not for text content.
 - Images, icons, and embeds sit beside text — not inside headings or paragraphs as spans.
 - Don't unlink a component to work around a failed insert. Insert into a parent, then reorder.
+- The MCP can't create a native **Navbar** (`w-nav`), even with the Designer bridge open. Dropdown, Tabs, and Slider work. Navbar markup sent as HTML lands as plain Divs and Links with the `w-` classes dropped, so there is no collapse or menu button. Don't fake it with an always-open menu: ask the user to add a Navbar in Designer, then build inside it.
 
 ## Attributes and props
 
