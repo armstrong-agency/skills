@@ -30,6 +30,8 @@ Ask **production** (default) or **beta**.
 
 List every harness or surface that needs Webflow for this project. For each one, find where it reads **project-scoped** MCP config: check its docs or CLI help rather than assuming. If a harness has a file below, follow it instead of the generic steps; these surfaces are easy to get wrong:
 
+- Claude Code (CLI and the desktop app's Code tab): [references/claude-code.md](references/claude-code.md)
+- Claude desktop app Chat: [references/claude-desktop.md](references/claude-desktop.md)
 - Codex (desktop app, CLI, IDE extension): [references/codex.md](references/codex.md)
 - Cursor desktop IDE: [references/cursor-local.md](references/cursor-local.md)
 - Cursor Cloud Agents: [references/cursor-cloud.md](references/cursor-cloud.md)
@@ -89,7 +91,8 @@ Call the Webflow guide/index tool once if the server exposes one. Prefer listing
 
 **Already have a managed or account-level Webflow connector**
 
-- Independent of project-scoped servers. Both can be active. Use the project-scoped server for client work so the workspace stays pinned to the project.
+- Independent of project-scoped servers in harnesses that read project config. Both can be active. Use the project-scoped server for client work so the workspace stays pinned to the project.
+- Claude desktop Chat has no project config and allows one connector per URL per org. Follow [references/claude-desktop.md](references/claude-desktop.md).
 
 ## Notes
 
