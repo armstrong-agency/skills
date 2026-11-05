@@ -10,7 +10,10 @@ Known Webflow MCP and Designer behavior that costs time if you don't expect it. 
 ## Elements and nesting
 
 - **Text Link** (`Link`) generally cannot nest Div / HtmlEmbed children. For a clickable row that needs an icon, chevron, or other nested block: use a **Link Block**, or put the icon as a **sibling** and style/position it.
-- Put text on headings, paragraphs, and text links. A generic Div is not for text content.
+- Text goes on a Text Block, Heading, Paragraph or Text Link, never a Div Block, even when it's bound to the CMS. Copying an existing row doesn't excuse this: check its element types first, and fix any Divs holding text.
+- The MCP reports Div Blocks and Text Blocks both as `Block`, so readback can't tell them apart. Choose the right type when building, and confirm in Designer.
+- The builder can ignore `set_text` on a Text Block, leaving Webflow's default text. Read the child String node back, and set the text there if needed.
+- The API can't read or set date formats or option-based conditional visibility. Replacing a bound element loses both, so warn the user before rebuilding it.
 - Images, icons, and embeds sit beside text — not inside headings or paragraphs as spans.
 - Don't unlink a component to work around a failed insert. Insert into a parent, then reorder.
 - The MCP can't create a native **Navbar** (`w-nav`), even with the Designer bridge open. Dropdown, Tabs, and Slider work. Navbar markup sent as HTML lands as plain Divs and Links with the `w-` classes dropped, so there is no collapse or menu button. Don't fake it with an always-open menu: ask the user to add a Navbar in Designer, then build inside it.
