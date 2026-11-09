@@ -12,12 +12,6 @@ The skills use the open [Agent Skills](https://agentskills.io) format, so they w
 npx skills add armstrong-agency/skills
 ```
 
-To install only some skills, name them, and include `wf-reference` with any skill that names classes:
-
-```bash
-npx skills add armstrong-agency/skills --skill wf-plan --skill wf-reference
-```
-
 You also need the Webflow MCP server connected to your project. `wf-mcp-setup` walks your agent through it.
 
 ## Skills
@@ -25,16 +19,11 @@ You also need the Webflow MCP server connected to your project. `wf-mcp-setup` w
 | Skill | What it does | Writes to Webflow |
 | --- | --- | --- |
 | `wf-mcp-setup` | Connects a project-scoped Webflow MCP server, so each project stays pinned to its own workspace. | No |
-| `wf-audit` | Reviews a connected or public site: style guide, naming convention, structure, rendered semantics. | No |
-| `wf-design-system` | Catalogs colors, type, spacing, radii, and control states into `DESIGN.md`. | No |
-| `wf-plan` | Inventories sections, finds what can be reused, and justifies anything new before it is built. | No |
-| `wf-prototype` | Assembles a layout on an unpublished draft page from existing components and classes only. | Draft page only |
-| `wf-build` | Implements one section at a time with a reuse ladder, approval gates, and a completion checklist. | Yes, after confirmation |
-| `wf-reference` | Shared lookups the other skills load: how to identify a site's naming convention, [Client-First](https://finsweet.com/client-first/docs/intro) and [Mast](https://www.nocodesupply.co/mast/docs) grammar, and known MCP and Designer quirks. | No |
+| `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds one section at a time on a sandbox page, tunes interactions, and sets up a Style Guide when the site has none. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro) and [Mast](https://www.nocodesupply.co/mast/docs) ship inside it. | Yes, after review |
 
 ## Workflow
 
-A typical job runs audit → design-system (if you need tokens) → plan → prototype → build. Each step is optional; ask for the one you need, such as "audit this site" or "plan the pricing page."
+`wf-build` reads the site, agrees a brief with you, and stops for your review of each section. The Webflow site is the record: nothing depends on a separate context file, and no new class is created until you approve it.
 
 No skill publishes a site unless you explicitly ask it to.
 

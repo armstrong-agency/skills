@@ -7,7 +7,7 @@ description: Connect a Webflow workspace to the current project via MCP. Use whe
 
 Add a project-scoped Webflow MCP server so this directory can read and write a specific Webflow workspace.
 
-Official endpoint: `https://mcp.webflow.com/mcp` (or beta). OAuth tokens are keyed by **server name**, so different projects can use different workspaces without sharing one global Webflow login.
+Official endpoint: `https://mcp.webflow.com/mcp` (or beta). Each server entry gets its own OAuth grant in the harnesses covered below, so different projects can use different workspaces without sharing one global Webflow login. A grant covers the sites the user selects, not necessarily every site in the workspace.
 
 Do not assume which harness the user runs. Ask, or detect it from the session and the project's existing config files. A project can be used from more than one harness, and each one needs its own registration.
 
@@ -35,6 +35,7 @@ List every harness or surface that needs Webflow for this project. For each one,
 - Codex (desktop app, CLI, IDE extension): [references/codex.md](references/codex.md)
 - Cursor desktop IDE: [references/cursor-local.md](references/cursor-local.md)
 - Cursor Cloud Agents: [references/cursor-cloud.md](references/cursor-cloud.md)
+- Cursor Grok Bot (built-in Webflow connection, no MCP server): [references/grok-bot.md](references/grok-bot.md)
 
 Local and cloud surfaces of the same product are often separate. Configuring one does not configure the other.
 
@@ -63,7 +64,7 @@ Transport must be Streamable HTTP. Do not use SSE. Use a local proxy such as `mc
 
 ### Step 5: Authenticate
 
-Start a fresh session in this project directory so the harness loads the new config, then connect `webflow-{name}` through the harness's MCP connection flow. The user selects the correct Webflow workspace in the browser.
+Start a fresh session in this project directory so the harness loads the new config, then connect `webflow-{name}` through the harness's MCP connection flow. The user selects the intended Webflow workspace and sites in the browser.
 
 Desktop OAuth does not authorize cloud agent surfaces. Authenticate each surface on its own.
 
@@ -71,7 +72,7 @@ Desktop OAuth does not authorize cloud agent surfaces. Authenticate each surface
 
 Discover Webflow MCP tools in-session. Do not freeze tool names.
 
-Call the Webflow guide/index tool once if the server exposes one. Prefer listing sites to confirm the intended workspace.
+Call the Webflow guide/index tool once if the server exposes one. List sites with a read-only call, and confirm the returned site and workspace are the intended ones. A successful login or a listed server is not proof of the right grant.
 
 ## Troubleshooting
 
@@ -79,11 +80,11 @@ Call the Webflow guide/index tool once if the server exposes one. Prefer listing
 
 - Fresh session in this project directory, not a resumed one.
 - Confirm the harness is reading the file you wrote.
-- Re-auth. Tokens are keyed by server name. If OAuth never starts, remove the server entry, re-add it, and retry.
+- Re-auth that server only. If OAuth never starts, remove and re-add that one entry, and retry.
 
 **Wrong workspace**
 
-- Remove the server entry, re-add, re-auth. One OAuth flow locks to one workspace.
+- Confirm which server name the task called, then re-auth that server and pick the intended grant. One OAuth flow grants one workspace's selected sites.
 
 **Works in one harness but not another**
 
@@ -96,5 +97,5 @@ Call the Webflow guide/index tool once if the server exposes one. Prefer listing
 
 ## Notes
 
-- One workspace per server entry. Multiple workspaces = multiple entries.
+- One grant per server entry. Multiple workspaces = multiple entries.
 - Do not add a single global Webflow MCP server for all client work.

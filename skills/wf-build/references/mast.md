@@ -1,8 +1,6 @@
 # Mast
 
-Naming and structure for sites that already follow No-Code Supply Co. Mast (v2.4-era style guide). Follow the project's style guide when it disagrees with these defaults.
-
-Authority: user → project instructions → what's already on the site → this file.
+Naming and structure for sites that follow No-Code Supply Co. Mast (v2.4-era style guide).
 
 Don't mix Client-First into a Mast job (`is-`, `section_hero`, `padding-global`, `main-wrapper`, `container-large`). A Mast underscore (`blog_header-title`) is context, not a Client-First folder.
 
@@ -57,4 +55,8 @@ Button, Form (`input-group`, `input`), Accordion, Modal (trigger is the next sib
 
 Build Mode kit: Section, Grid Row, Grid Col, Spacer, Border.
 
-Human docs: https://www.nocodesupply.co/mast/docs — style guide https://mast-framework.webflow.io/
+## Docs
+
+- [Style guide](https://mast-framework.webflow.io/)
+- [Cloneable starter](https://webflow.com/made-in-webflow/website/mast-framework)
+- [Docs](https://www.nocodesupply.co/mast/docs)

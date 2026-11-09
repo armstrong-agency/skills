@@ -1,12 +1,6 @@
 # Client-First
 
-Naming and structure for sites that already follow Finsweet Client-First. This file teaches the structure and class usage Client-First expects — short on purpose. Full pedagogy stays in Finsweet's docs.
-
-Client-First puts the client's interests first in the Webflow build: a project that scales, can be handed off, and uses class names a non-expert can read. Details: [Intro](https://finsweet.com/client-first/docs/intro).
-
-It is built for Webflow Designer workflow and organization — not a traditional HTML/CSS methodology.
-
-**Authority:** user → project instructions / site style guide → what's already on the site → this file. When the project's style guide disagrees with these defaults, follow the style guide.
+Naming and structure for sites that follow Finsweet Client-First. Full pedagogy stays in Finsweet's docs.
 
 Sizes in Client-First are in **rem** (relative to the root font size). Prefer rem over px for layout and type. [Sizes and rem](https://finsweet.com/client-first/docs/sizes-and-rem).
 
@@ -34,7 +28,7 @@ Every section has `padding-section-[size]`, full-height sections included. For a
 
 Each wrapper needs a job (layout, size, position, overflow, group). Skip empty ones. Prefer nested layers over stacking many unrelated utilities on one element ([Classes strategy 2](https://finsweet.com/client-first/docs/classes-strategy-2)).
 
-Spacing utilities (`margin-*`, `padding-*`, spacers): use the Client-First spacing system. [Spacing strategy](https://finsweet.com/client-first/docs/spacing-strategy). There is more than one valid strategy for the space between content blocks: `spacer-*` elements between blocks, or `margin-*` utilities on the blocks. Follow what the project's existing pages already do. If there's no precedent, ask the user which they prefer. In a non-interactive run, use `padding-*` and note the choice in the handoff.
+Spacing utilities (`margin-*`, `padding-*`, spacers): use the Client-First spacing system. [Spacing strategy](https://finsweet.com/client-first/docs/spacing-strategy). There is more than one valid strategy for the space between content blocks: `spacer-*` elements between blocks, or `margin-*` utilities on the blocks. Follow what the project's existing pages already do. If there's no precedent, ask the user which they prefer.
 
 ## Classes
 
@@ -76,11 +70,18 @@ For structure and spacing, prefer Client-First utility classes (`padding-global`
 
 Dark mode belongs on the semantic collection when the project uses it.
 
+## Interactions
+
+Name interactions `Element [Action State]`, with State only when it adds context: `Sort Button Arrow [Rotate Open]`. Keep names short enough to fit Designer's Interactions panel. [Interactions naming](https://finsweet.com/client-first/docs/interactions-naming).
+
 ## Docs
 
+- [Style guide](https://client-first.webflow.io/)
+- [Cloneable starter](https://webflow.com/made-in-webflow/website/client-first-cloneable)
 - [Intro](https://finsweet.com/client-first/docs/intro)
 - [Core structure](https://finsweet.com/client-first/docs/core-structure-strategy)
 - [Classes strategy 2](https://finsweet.com/client-first/docs/classes-strategy-2)
 - [Typography](https://finsweet.com/client-first/docs/typography-strategy)
 - [Spacing](https://finsweet.com/client-first/docs/spacing-strategy)
 - [Sizes and rem](https://finsweet.com/client-first/docs/sizes-and-rem)
+- [Variables](https://finsweet.com/client-first/docs/variables)

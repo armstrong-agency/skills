@@ -30,7 +30,7 @@ Each connector holds one OAuth login, so it points at one Webflow workspace. Whe
 
 Each `mcp-remote` process keeps its OAuth tokens in its own `MCP_REMOTE_CONFIG_DIR`. Two servers can point at the same Webflow URL and still hold separate logins.
 
-1. **Install `mcp-remote` once, outside every repository, at an exact version.** Check `npm view mcp-remote version`, review the release, and pin it. It needs Node 20 or newer.
+1. **Install `mcp-remote` once, outside every repository, at an exact version.** Check `npm view mcp-remote version`, review the release, and pin it. Check the pinned release's Node requirement.
 
    ```bash
    npm install --prefix "$HOME/.claude-desktop-mcp/runtime/mcp-remote" --save-exact mcp-remote@<version>

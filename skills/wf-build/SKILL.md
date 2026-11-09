@@ -1,162 +1,68 @@
 ---
 name: wf-build
-description: Implement Webflow work with the reuse ladder, native Designer styling, confirmation gates, and completion evidence. Use when building pages, creating justified new classes or components, promoting approved sandbox work, or making system decisions. Uses wf-reference for naming grammar. Never publish unless the user explicitly asks.
+description: Build pages, sections, components, interactions and the Style Guide on a Webflow site over the MCP. Use when building, changing, planning, prototyping or naming classes in Webflow.
 ---
 
 # Webflow Build
 
-Implement in Webflow with deliberate reuse, native Designer styling, and gates that keep incomplete work from being treated as shipped. Use `wf-plan` when the page/section plan is missing. Use `wf-prototype` when the user only wants a sandbox assemble.
+The Webflow site is the record: read context from it, keep the brief and reviews in the conversation, and leave finished work documented in its Style Guide.
 
-Use Webflow's official skills for platform operations (MCP tool mechanics, publishing workflows, CMS operations, technical audits). This skill is implementation judgment.
+## 1. Check context
 
-If this build runs through a long-lived coding agent (a cloud or local worker), follow [references/agent-runs.md](references/agent-runs.md) for briefing, the turn budget, the handoff file and scoped reads.
+Done when you can state:
 
-## Grammar first
+- **Connection:** the MCP reaches the intended workspace, using the tool names this session exposes. If it is missing, run `wf-mcp-setup`.
+- **Target:** the site and page.
+- **Source of truth:** which of live Webflow, Figma, a screenshot or a written brief is authoritative for what.
+- **Style Guide:** present or missing.
+- **Grammar:** identified through [grammars.md](references/grammars.md).
 
-Load the `wf-reference` skill and follow its convention check before naming or creating a class. If `wf-reference` is not installed, stop and tell the user to run `npx skills add armstrong-agency/skills --skill wf-reference`.
+Read [common-issues.md](references/common-issues.md) before the first write.
 
-## Discover tools, then act
+## 2. Route
 
-Do not assume Webflow MCP tool or action names. List the tools and actions exposed in this session and use those. Revalidate a named action before depending on it. Read `common-issues.md` in `wf-reference` for combo attachment, nesting, Designer session, variable scoping, and publishing quirks.
+- **Routine change** (copy swap, CMS item edit, instance-prop change, assembling approved pieces): make it under Build rules, read it back, and report.
+- **Style Guide missing:** follow [style-guide.md](references/style-guide.md), then agree the brief.
+- **Everything else:** agree the brief.
 
-## Destination and confirmation
+## 3. Agree the brief
 
-Ask where to build if `wf-plan` did not already lock it. Default for new work: a **new unpublished draft/sandbox page**.
+Write it per [brief.md](references/brief.md) and stop until the user approves. Its invent list is the complete set of new pieces: anything that surfaces later comes back for review before it is created.
 
-User confirmation is required before:
+## 4. Build one section at a time
 
-- overwriting existing page content
-- adding sections to a real/live page
-- publishing to staging
-- publishing to production
+Work on the sandbox page, climbing the reuse ladder from the top:
 
-Approving a section on a draft does not promote or publish it.
+1. Existing component
+2. Existing class
+3. Combo class on an existing class
+4. New class from the invent list
+5. Custom code, for behavior Webflow cannot express
 
-## Reuse ladder (strict order)
+For a mock-up, stop at rung 3 and report what the system could not do. Before changing a shared component, follow [shared-components.md](references/shared-components.md). When interactions or settings need iteration, create and adjust them freely on the sandbox page and check them in Preview.
 
-Before creating anything:
+## 5. Review each section
 
-1. **Existing component** — use a component that already owns the responsibility
-2. **Existing class** — use a global or project class
-3. **Combo class** on an existing class
-4. **New class** — only when justified, named to the style guide or grammar
-5. **Custom code** — last resort, only for behavior Webflow cannot express
+Present the section at desktop and mobile against the acceptance checks, and stop until the user approves it. Then add its new classes and variables to the Style Guide, and suggest converting it to a component if it is not one.
 
-Write the justification in the section plan before building a new class. Confirm a utility or existing pattern cannot do it.
+Approval covers the sandbox page only. Overwriting page content, moving work onto a real page, and publishing to staging or production each need their own explicit yes.
 
-## Native Webflow styling only
+## 6. Complete
 
-Use Designer-native Style panel fields (or MCP style properties that map to them): Height, Width, Max Width, Margin, Padding, Display, Position, Flex, Grid as Webflow exposes them, Background (color, image, gradients Designer supports), typography, borders, radius, shadows as Designer supports, Overflow, z-index, opacity, object-fit.
+Verify each of these, and name any surface you could not reach:
 
-Never invent CSS Webflow cannot set. Do not use Custom Code embeds, page `<style>`, or Global Canvas CSS to work around Designer restrictions. If Designer cannot set it, approximate with supported tools or tell the user it is unavailable natively.
+- Canvas and Preview match the brief at desktop, tablet, mobile landscape and mobile portrait.
+- States, interactions and keyboard order work where they exist.
+- Persisted readback matches the intended structure.
+- Shared definitions and unrelated instances are intact, and no legacy implementation runs beside its replacement.
 
-Custom code is only for behavior Webflow cannot express, never for presentation. Variables are reusable system tokens, not a backdoor for one-off values native fields already accept.
+Report the result first, then what was created, changed and reused, anything unverified, and whether it is saved, staged or published.
 
-## Hard structure rules
+## Build rules
 
-- **No Navigator labels** unless the user asked. Class names and the element tree must be enough.
-- **Images are siblings, not children of text.** Do not nest Image, icon, or embed nodes inside span, paragraph, heading, or other text nodes. Place them as their own sibling nodes next to the text.
-
-## Elements and semantics
-
-- Use semantic `<main>` and `<section>` structure.
-- Heading elements at the correct document level; control appearance with classes or components.
-- Paragraph elements for paragraph copy.
-- Links for navigation, buttons for actions.
-- Webflow Label elements only for form controls.
-- Div Blocks for layout wrappers and purely decorative objects.
-- Reuse a design-system component named "Label," "Button," or similar instead of recreating its visual parts with raw elements.
-- Remove anonymous or redundant wrappers. A wrapper should have a clear class or a clear structural purpose.
-
-## Class stacks
-
-Utilities improve consistency until the stack is hard to understand in Designer. Avoid deep stacks of single-purpose utilities.
-
-When several utilities express one stable component responsibility, prefer a component-specific class. Split a genuine layout responsibility onto another wrapper only when that wrapper improves the structure. Do not create a class merely to shorten a stack that is already clear.
-
-Treat Webflow's visible class list and its native selector-chain metadata as separate facts. A data readback of several class names does not prove the intended sequential selector chain. Create and repair stacks through a Webflow-native path, verify the expanded selector list in Designer, and confirm the persisted records.
-
-Never change a global utility to solve one element's stacking problem.
-
-## Responsive
-
-- Start from the main breakpoint and adapt downward deliberately.
-- Reuse the site's established breakpoint utilities and combinations.
-- Preserve semantic and reading order on smaller breakpoints.
-- Check text wrapping, media ratios, overflow, interactive target sizes, and decorative positioning.
-- Avoid fixed heights unless the content and established design require them.
-- Do not treat the desktop result as completion.
-
-## When the full loop runs
-
-Run page-plan + section loops only for a new page, a new section, or when a new class, combo, or component is needed. Routine reuse (copy swaps, CMS item edits, instance-prop changes, assembling approved pieces) skips the loops: reuse and report.
-
-If no plan exists yet, run `wf-plan` (or the same planning steps) before inventing.
-
-### Page level
-
-1. Plan: list sections and reuse opportunities.
-2. Enter each section one at a time.
-
-### Section level
-
-1. **Plan / approve** — new class or combo, reuse trail, written justification. Pause.
-2. **Build / approve** — desktop and mobile. Pause.
-3. **Component / final approval** — if approved and not already a component, **suggest** converting; wait for yes.
-
-## Invent (only with the loop)
-
-New components, variants, slots, properties, classes, variables, modes, responsive patterns, interactions, shared-component structural changes, refactors. Still reuse-first. Invent starts with discovery, not with a new class.
-
-## Shared-component safety
-
-Before changing a shared definition:
-
-1. Inventory instances, variants, properties, slots, nested components, default content, and consumers.
-2. Distinguish definition changes from instance overrides.
-3. Record which existing behavior must remain unchanged.
-4. Prototype structural work on a duplicate on a sandbox page when blast radius is material.
-5. Validate the isolated version before promoting.
-6. Verify the original and unrelated instances after promotion.
-
-Never unlink an instance merely to avoid understanding the shared component.
-
-## Completion gate before presentation
-
-Do not present work as complete until the relevant checks have been performed. If a verification surface is unavailable, say so.
-
-### Structure and system
-
-- `wf-reference` grammar was read; style guide followed on names
-- Existing system used wherever suitable
-- Every new class, variable, component, variant, slot, or behavior has a distinct responsibility
-- Shared definitions and unrelated instances remain intact
-- Navigator, semantics, and class stacks are understandable
-- Legacy and replacement implementations are not both running
-- Native Style panel only
-- No unsupported CSS, one-off custom properties for native fields, or embed/CSS dumps
-
-### Visual, interaction, evidence
-
-- Designer canvas and Preview/runtime match intent at desktop, tablet, mobile landscape, and mobile portrait
-- Relevant hover/focus/open/disabled states, keyboard order, and semantics checked
-- Persisted Webflow readback matches the intended structure
-- Saved draft, staging, Webflow subdomain, and production are distinguished
-- Publication only when explicitly requested
-
-See `common-issues.md` in `wf-reference` when canvas, Preview, publication state, MCP, or platform limits matter.
-
-## Handoff
-
-```text
-Result:
-Grammar: [client-first | mast | mixed | none]
-Created / changed / reused:
-Approvals given:
-Checked: [canvas / Preview / readback / breakpoints]
-Unverified:
-Saved vs staged vs published:
-Remaining user decisions:
-```
-
-Lead with the completed result. Do not make the user reconstruct completion from a list of tool calls.
+- Style through Designer's Style panel fields or the MCP properties that map to them. If Designer cannot set a value, approximate it with supported tools or tell the user.
+- Custom code carries behavior only, so keep presentation out of embeds, page `<style>` and Global Canvas CSS.
+- Leave Navigator labels unset unless the user asks.
+- Place Image, icon and embed nodes as siblings of text nodes.
+- Use Webflow Label elements only for form controls.
+- Fix one element's stacking locally, leaving global utilities unchanged.
