@@ -2,7 +2,7 @@
 
 Naming and structure for sites that follow No-Code Supply Co. Mast (v2.4-era style guide).
 
-Don't mix Client-First into a Mast job (`is-`, `section_hero`, `padding-global`, `main-wrapper`, `container-large`). A Mast underscore (`blog_header-title`) is context, not a Client-First folder.
+Every class follows Mast. A Mast underscore (`blog_header-title`) marks context, not a folder.
 
 ## Structure
 
@@ -47,7 +47,7 @@ CMS: `row` on the Collection List, `col` on each item.
 
 ## Variables
 
-Theme, Typography, Components, Layout, Color — customize variables before restyling every instance. Color via `u-bg-*` / `u-text-*` and `u-mode-dark` / `u-mode-light`. Heading element vs heading class: same split as Client-First. Prefer `rich-text` for body. Prefer EM type margins.
+Theme, Typography, Components, Layout, Color — customize variables before restyling every instance. Color via `u-bg-*` / `u-text-*` and `u-mode-dark` / `u-mode-light`. The heading element sets the document level and the heading class sets the look. Prefer `rich-text` for body. Prefer EM type margins.
 
 ## Components (confirm they exist on this site)
 

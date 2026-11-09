@@ -19,11 +19,11 @@ You also need the Webflow MCP server connected to your project. `wf-mcp-setup` w
 | Skill | What it does | Writes to Webflow |
 | --- | --- | --- |
 | `wf-mcp-setup` | Connects a project-scoped Webflow MCP server, so each project stays pinned to its own workspace. | No |
-| `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds one section at a time on a sandbox page, tunes interactions, and sets up a Style Guide when the site has none. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro) and [Mast](https://www.nocodesupply.co/mast/docs) ship inside it. | Yes, after review |
+| `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds the page one section at a time on a sandbox page, reviews each section for completeness and design fidelity, then walks you through them one by one, and sets up a Style Guide when the site has none. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro) and [Mast](https://www.nocodesupply.co/mast/docs) ship inside it. | Yes, after review |
 
 ## Workflow
 
-`wf-build` reads the site, agrees a brief with you, and stops for your review of each section. The Webflow site is the record: nothing depends on a separate context file, and no new class is created until you approve it.
+`wf-build` reads the site, agrees a brief with you, builds the whole page, checks each section against the design itself, then stops for your approval of each section. The Webflow site is the record: nothing depends on a separate context file, and no new class is created until you approve it.
 
 No skill publishes a site unless you explicitly ask it to.
 

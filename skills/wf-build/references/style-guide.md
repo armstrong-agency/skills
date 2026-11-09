@@ -10,8 +10,8 @@ Open the style guide linked in the grammar file's Docs section and use its struc
 
 Take literal values from the source. State which source is authoritative for each value, and surface conflicts between sources.
 
-- **Figma:** node data for styles, variables and measurements. Calibrate screenshots before trusting them.
-- **Live site:** computed styles at desktop, tablet, mobile landscape and mobile portrait.
+- **Figma:** node data for styles, variables and measurements.
+- **Live site:** computed styles at the four breakpoints.
 
 Collect only recurring foundations:
 
