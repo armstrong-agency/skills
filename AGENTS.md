@@ -6,15 +6,16 @@ Rules for anyone, human or agent, changing this repository. The skill list is in
 
 - Keep skills compatible with the open Agent Skills format (`skills/<name>/SKILL.md`).
 - Each skill is one `SKILL.md` plus only the files that skill must ship.
-- Shared material (framework grammar, MCP/Designer quirks) lives once, in `wf-reference`. Never copy it into another skill. Skills that need it load `wf-reference` and stop with the install command if it is missing.
-- First step of any skill that names classes: load `wf-reference` and follow its convention check.
+- `wf-build` is the main skill. Grammar files, MCP/Designer quirks and branch-only steps live in `skills/wf-build/references/`, each meaning stated once.
+- The Webflow site is the record. Skills read context from it and require no per-site context files.
 - Instructions only. No required scripts or crawler dependencies.
 
 ## Content
 
 - Discover Webflow MCP tool names in-session. Don't freeze tool names; official Webflow MCP docs cover mechanics.
 - Never publish a Webflow site from these skills unless the user explicitly asks.
-- Keep workflow out of grammar files. A grammar file describes naming and structure for one convention.
+- Keep workflow out of grammar files. A grammar file describes naming and structure for one convention, and ends with a Docs section linking its style guide and cloneable starter.
+- To add a grammar, add `<name>.md` to `references/` and a row to `references/grammars.md`. Within skills, name specific grammars only in those files.
 - Link to third-party docs rather than copying substantial third-party text.
 
 ## Adding to `common-issues.md`
