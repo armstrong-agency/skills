@@ -85,3 +85,5 @@ These servers are configured for the whole machine, not for a project, so every 
 - **Server fails at startup:** read `~/Library/Logs/Claude/mcp-server-webflow-{name}.log`. The usual cause is a relative path or a command that is only on the shell `PATH`.
 - **Two servers return the same workspace:** they share an auth directory, or both logins chose the same workspace. Move only that server's auth directory aside, create a new one, and authorize again. Do not delete every MCP credential as a blanket repair.
 - **Works in Code, not in Chat (or the reverse):** this is expected. The two surfaces do not share MCP registration.
+
+_Tested October 29, 2026: two `mcp-remote` servers at the same Webflow URL kept separate logins in Chat, returning sites in two different workspaces, and both also loaded in the Code tab._

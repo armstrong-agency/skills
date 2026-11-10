@@ -53,3 +53,5 @@ Claude Code on the web and cloud sessions started from the app load `.mcp.json` 
 - **Wrong workspace:** `/mcp` → `webflow-{name}` → Clear authentication, then sign in again. Do not remove other servers' sign-ins.
 - **Code tab connects to a different workspace than the CLI:** a same-named server in `claude_desktop_config.json` or at user scope in `~/.claude.json` is overriding `.mcp.json`. Rename or remove the duplicate.
 - **`claude mcp list` warns about the same name in more than one scope:** keep one definition and remove the others with `claude mcp remove webflow-{name} --scope <scope>`.
+
+_Tested October 29, 2026 in the desktop Code tab: the project's `.mcp.json` server, the claude.ai connector and two `claude_desktop_config.json` servers all connected, and each returned its own site._

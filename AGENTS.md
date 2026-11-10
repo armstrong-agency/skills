@@ -17,6 +17,7 @@ Rules for anyone, human or agent, changing this repository. The skill list is in
 - Keep workflow out of grammar files. A grammar file describes naming and structure for one convention, and ends with a Docs section linking its style guide and cloneable starter.
 - To add a grammar, add `<name>.md` to `references/` and a row to `references/grammars.md`. Within skills, name specific grammars only in those files.
 - Link to third-party docs rather than copying substantial third-party text.
+- End each harness reference in `wf-mcp-setup` with a dated, sanitized _Tested_ note, so a later edit can tell verified steps from untested ones.
 
 ## Adding to `common-issues.md`
 
