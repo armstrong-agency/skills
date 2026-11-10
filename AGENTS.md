@@ -30,6 +30,8 @@ Add a bullet only when:
 
 This repository is public. Never include client names, screenshots, extracted tokens, site IDs, or evaluation artifacts.
 
+Run `python3 .github/scripts/check.py` before committing. CI runs it on every pull request; it catches ID-shaped strings, local paths, invalid TOML or JSON blocks and broken relative links, but not client names.
+
 ## License
 
 Original material is CC0.
