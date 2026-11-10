@@ -16,3 +16,5 @@ Before working, tell the bot which Webflow account to use, and have it list that
 
 - **Wrong workspace:** confirm which account the bot used, then sign in to that account again and pick the right workspace.
 - **Asks to log in again:** reconnect that account only, and leave the others connected.
+
+_Tested in Grok Bot's early-access build: a second Webflow account connected alongside the first._
