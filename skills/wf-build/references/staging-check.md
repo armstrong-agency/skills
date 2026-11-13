@@ -10,6 +10,8 @@ Compare the site's Last Published time with the page's `lastUpdated`, and fetch 
 
 In headless Chrome, with a timeout on every run, load the page at each of the four breakpoints. Scroll each section into view before measuring, since lazy-loaded images report collapsed heights until then. Measure against the acceptance checks, click through every interaction and state, and tab through the keyboard order.
 
+When Figma node data exists, compare numbers before pictures. Dump every staged element's box (x, y from its section's top, width, height) and computed font in one script run, and set that list beside the Figma node positions. Done when each Figma node in scope has a staged counterpart within a few pixels, or a logged gap. Read screenshots only for what numbers cannot show: colour, shape and imagery.
+
 Check in the published HTML what API readback cannot prove, listed under Publishing in [common-issues.md](common-issues.md).
 
 ## 3. Test a fix before publishing
