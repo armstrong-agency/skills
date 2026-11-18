@@ -60,7 +60,7 @@ Done when every section passes, or each remaining gap is logged with the reason 
 
 Present each section in order at desktop and mobile, with its agent-review result and any logged gaps, and stop until the user approves it. Apply requested changes and re-run the agent review on that section before presenting it again. After approval, suggest converting the section to a component if it is not one. When it introduced a reusable piece, such as a variable, utility, or base class meant for other sections, propose adding that piece to the Style Guide. Classes that belong to one section stay on that section.
 
-Approval covers the sandbox page only. Overwriting page content, moving work onto a real page, and publishing to staging or production each need their own explicit yes. Ask about staging publishes at the start of the workstream.
+Approval covers the sandbox page only. Overwriting page content and moving work onto a real page each need their own explicit yes. Publishing follows the publishing levels in the project's `AGENTS.md`. Where it has none, each publish to staging or production needs its own explicit yes, and you ask about staging publishes at the start of the workstream.
 
 ## 7. Complete
 
