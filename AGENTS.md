@@ -6,8 +6,7 @@ Rules for anyone, human or agent, changing this repository. The skill list is in
 
 - Keep skills compatible with the open Agent Skills format (`skills/<name>/SKILL.md`).
 - Each skill is one `SKILL.md` plus only the files that skill must ship.
-- `wf-build` is the main skill and is user-invoked. Its references are reached only through pointers in `SKILL.md` and in each other, so every pointer states when to read its file.
-- In `wf-build`, grammar files, MCP/Designer quirks and branch-only steps live in `skills/wf-build/references/`, each meaning stated once.
+- `wf-build` is the main skill. Its references are reached only through pointers in `SKILL.md` and in each other, so every pointer states when to read its file. Grammar files, MCP/Designer quirks and branch-only steps live in `skills/wf-build/references/`, each meaning stated once.
 - The Webflow site is the record. `wf-build` reads context from it and requires no per-site files. A working folder from `wf-folder-setup` is optional and holds only what the site cannot.
 - Instructions only. No required scripts or crawler dependencies.
 

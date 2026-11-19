@@ -1,7 +1,6 @@
 ---
 name: wf-build
-description: Build pages, sections, components, interactions and the Style Guide on a Webflow site over the MCP.
-disable-model-invocation: true
+description: Build pages, sections, components, interactions and the Style Guide on a Webflow site over the MCP. Use when building, changing, planning, prototyping, naming classes or components, or writing a site's agent instructions in Webflow.
 ---
 
 # Webflow Build
