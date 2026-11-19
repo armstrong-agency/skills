@@ -2,6 +2,11 @@
 
 Webflow stores agent instructions on the site, where Webflow's AI Assistant and every MCP-connected agent read them. A **rule** is read before every action. A **skill** is read when the task matches its description or the user names it. Use the pair to make agents build from the component library: the rule carries the reflex, and the skill carries the map.
 
+Two things must hold when you finish:
+
+- **Components first:** the instructions tell every agent to search the components and place an instance before it adds any element or class.
+- **Every component documented:** each component says where to use it, in its own description and in a row of the skill's index.
+
 [Webflow's guide](https://help.webflow.com/hc/en-us/articles/52536649709971-Create-and-manage-AI-agent-instructions) covers the Instructions panel, import and export.
 
 ## 1. Read what exists
@@ -14,12 +19,14 @@ Done when you can list every rule and skill on the site, and whether each is on.
 
 Instructions point at components, so they work only as well as the components' search surface. Run the audit in [components.md](components.md) first.
 
+Done when every component has a description that says where to use it.
+
 ## 3. Write one rule
 
 A rule spends context on every action, so it holds the reflex and nothing else. Store it at `rules/components-first.md`, naming the site's own atoms:
 
 ```md
-Build from the component library. Before adding an element, search the site's components for it and place an instance of the match, then set its props and variants. Headings, buttons, links, icons and spacers each have a component. Add an element with a class only when the search returns no fit, and name that gap in your report.
+Build from the component library. Before adding an element, search the site's components for it and place an instance of the match, then set its props and variants. Each component's description says where it belongs. Headings, buttons, links, icons and spacers each have a component. Add an element with a class only when the search returns no fit, and name that gap in your report.
 ```
 
 ## 4. Write the library skill
@@ -29,7 +36,7 @@ Store it at `<skill-name>/SKILL.md`, with a lowercase kebab-case name that uses 
 The body holds what no single component description can:
 
 - **Ladder:** the order to try, from component to existing class to combo class to asking the user.
-- **Index:** one row per component, mapping the need to the component. "A heading or title" maps to `Atom / Heading`.
+- **Index:** one row for every component, giving the need it answers and where it is used. "A heading or title" maps to `Atom / Heading`, used in every section and card.
 - **Composition:** which components go inside which slots, and the order of pieces in a standard section.
 - **Edges:** the needs with no component, and what to build for each.
 
@@ -45,8 +52,8 @@ Create both as drafts and show them to the user. New instructions start off, and
 
 Then run the **cold test**: a fresh agent with no brief, on the sandbox page, asked to add a section with a heading, a paragraph and a button. It passes when readback shows a component instance for each atom and no new classes. When it fails, sharpen the missed component's description first, then the skill's index, then the rule.
 
-Done when both are on and the cold test passes.
+Done when both are on, every component has a description and an index row, and the cold test passes.
 
 ## Keep current
 
-When a component is added, renamed or removed, update its description and its index row in the same job.
+When a component is added, renamed or removed, write or update its description and its index row in the same job.
