@@ -20,6 +20,7 @@ You also need the Webflow MCP server connected to your project. `wf-mcp-setup` w
 | --- | --- | --- |
 | `wf-mcp-setup` | Connects a project-scoped Webflow MCP server, so each project stays pinned to its own workspace. | No |
 | `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds the page one section at a time on a sandbox page, reviews each section for completeness and design fidelity, then walks you through them one by one, and sets up a Style Guide when the site has none. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro) and [Mast](https://www.nocodesupply.co/mast/docs) ship inside it. | Yes, after review |
+| `wf-site-rules` | Writes one short build-rules entry into the site's own agent rules: naming convention, what to reuse, what not to touch. For the client's agent or the next developer. | Yes, after approval |
 
 ## Workflow
 
