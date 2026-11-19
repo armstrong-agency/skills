@@ -1,10 +1,6 @@
 # Client-First
 
-Naming and structure for sites that follow Finsweet Client-First v3, which is built around Webflow Variables. Sizes are in **rem**; prefer rem over px for layout and type.
-
-## Version
-
-A v3 site has the Base, Theme, Typography, Layout and Sizes variable collections, section padding bound to variables on the section class, and one-class spacing (`padding-bottom-medium`). A v2 site has a `padding-global` layer in every section, two-class spacing (`padding-bottom` + `padding-medium`) and `spacer-*` classes. Build in the version the site uses, and tell the user when a site mixes them.
+Naming and structure for sites that follow Finsweet Client-First, which is built around Webflow Variables. Sizes are in **rem**; prefer rem over px for layout and type.
 
 ## Structure
 
@@ -83,8 +79,6 @@ Prefer utilities for shared CSS properties and custom classes for specific compo
 - **Misc:** `overflow-hidden|scroll|auto|clip|visible`, `z-index-1|2`, `pointer-events-none|auto`, `aspect-ratio-square|portrait|landscape|widescreen`, `icon-height-*`, `icon-1x1-*`, `disable-select`, `text-area-vertical`.
 - **Button:** `button`, `button is-secondary`, `button is-text`.
 
-v3 removed `layer` and no longer recommends `spacer-*`.
-
 ## Typography
 
 Style the HTML tags (`body`, `p`, `h1`–`h6`) as the defaults, and leave most headings and text with no class. Add a `heading-style-*` or `text-*` utility only where an instance differs from the default. The heading **element** is the document level; the heading **class** is the look. Text that needs heading styles without being a heading is a Text Block with a custom class.
@@ -118,7 +112,7 @@ Every color uses a variable, with one exception: alpha values of pure black or w
 
 ## Components
 
-Name components `Group Name / Component Identifier`. The slash does not create the group, so create the group in the Components panel and match the name to it. The v3 page template ships `Global / Styles` (global styles), `Template / Section` and `Template / Core Structure` (unlink to start a section or page).
+Name components `Group Name / Component Identifier`. The slash does not create the group, so create the group in the Components panel and match the name to it. The page template ships `Global / Styles` (global styles), `Template / Section` and `Template / Core Structure` (unlink to start a section or page).
 
 Custom CSS goes in a native embed inside `Global / Styles`, never in Site or Page Settings. Finsweet's defaults and project CSS sit in separate embeds, so add project CSS to its own embed and leave the defaults unchanged.
 
@@ -131,7 +125,6 @@ Name interactions `Element [Action State]`, with State only when it adds context
 - [Style guide](https://client-first.webflow.io/)
 - [Cloneable starter](https://webflow.com/made-in-webflow/website/client-first-cloneable)
 - [Intro](https://finsweet.com/client-first/docs/intro)
-- [What's new in v3](https://finsweet.com/client-first/docs/whats-new)
 - [Core structure](https://finsweet.com/client-first/docs/core-structure-strategy)
 - [Variables](https://finsweet.com/client-first/docs/variables)
 - [Spacing](https://finsweet.com/client-first/docs/spacing-strategy)

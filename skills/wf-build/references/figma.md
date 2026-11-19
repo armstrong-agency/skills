@@ -2,6 +2,8 @@
 
 Figma MCP calls are a budget: a section-level `get_metadata` can run to about 800k characters, and the plan's call limit can run out mid-job. Spend calls only on what an export cannot prove.
 
+Figma node data proves structure, text styles, variables and measurements. A raster proves only that capture, so calibrate its scale before measuring from it.
+
 ## 1. Ask for exports first
 
 Before the first Figma call, ask the user for exports of the frames in scope, saved to a folder you can read:
