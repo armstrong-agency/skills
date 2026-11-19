@@ -15,7 +15,7 @@ Done when you can state:
 
 - **Connection:** the MCP reaches the intended workspace, using the tool names this session exposes. If it is missing, run `wf-mcp-setup`.
 - **Target:** the site and page.
-- **Source of truth:** which of live Webflow, Figma, a screenshot or a written brief is authoritative for what. Figma node data proves structure, text styles, variables and measurements; a raster proves only that capture, so calibrate its scale before measuring from it. When Figma is a source, follow [figma.md](references/figma.md) before the first Figma call.
+- **Source of truth:** which of live Webflow, Figma, a screenshot or a written brief is authoritative for what. When Figma is a source, follow [figma.md](references/figma.md) before the first Figma call.
 - **Style Guide:** present or missing.
 - **Grammar:** identified through [grammars.md](references/grammars.md).
 - **Site instructions:** the agent rules and skills stored on the site, each one read.
@@ -45,35 +45,24 @@ Build each section in brief order on the brief's destination, the sandbox page b
 
 Work component-forward. Before placing a heading, button, link, icon or spacer, search the site's components and use the one whose job matches, so an `Atom / Heading` component wins over a new heading class. Judge the fit: a component that is close but wrong for the job stays unused, and the gap goes in the report.
 
-For a prototype, stop at rung 3 and note what the system could not do. When a section uses or needs Finsweet Attributes (`fs-*`), for filtering, CMS loading or other behavior Webflow lacks natively, read [finsweet-attributes.md](references/finsweet-attributes.md). Before changing a shared component, follow [shared-components.md](references/shared-components.md). Create and adjust interactions and settings freely on the sandbox page, checking them in Preview.
+For a prototype, stop at rung 3 and note what the system could not do. Read [finsweet-attributes.md](references/finsweet-attributes.md) for a section with `fs-*` attributes, [swiper.md](references/swiper.md) for a Swiper slider, and [shared-components.md](references/shared-components.md) before changing a shared component. Create and adjust interactions and settings freely on the sandbox page, checking them in Preview.
 
 Done when every section in the brief exists on the page.
 
-## 5. Agent review, one section at a time
+## 5. Review, one section at a time
 
-Review each section in order against the brief and its design source, fix what fails, and re-check until it passes. Dispatch a reviewer subagent per section when the harness allows, so the read is fresh; give it the brief, the section's design source and the page, and fix what it finds. When canvas snapshots fail or a check needs published output, follow [staging-check.md](references/staging-check.md). A section passes when:
+Follow [review.md](references/review.md): review each section yourself against the brief and its design source, then present each to the user and stop for approval.
 
-- **Complete:** every element, state and interaction in its design source exists, and nothing outside the brief was added.
-- **Faithful:** Canvas and Preview match the acceptance checks at the four breakpoints, from Figma node data where it exists.
-- **Working:** states, interactions and keyboard order behave where they exist.
-- **Persisted:** readback matches the intended structure.
+Done when the user has approved every section.
 
-Done when every section passes, or each remaining gap is logged with the reason it cannot close.
-
-## 6. Human review, one section at a time
-
-Present each section in order at desktop and mobile, with its agent-review result and any logged gaps, and stop until the user approves it. Apply requested changes and re-run the agent review on that section before presenting it again. After approval, suggest converting the section to a component if it is not one, named and described per [components.md](references/components.md). When it introduced a reusable piece, such as a variable, utility, or base class meant for other sections, propose adding that piece to the Style Guide. Classes that belong to one section stay on that section.
-
-Approval covers the sandbox page only. Overwriting page content and moving work onto a real page each need their own explicit yes. Publishing follows the publishing levels in the project's `AGENTS.md`. Where it has none, each publish to staging or production needs its own explicit yes, and you ask about staging publishes at the start of the workstream.
-
-## 7. Complete
+## 6. Complete
 
 Done when every section is approved and these hold, naming any surface you could not reach:
 
 - Shared definitions and unrelated instances are intact.
 - No legacy implementation runs beside its replacement.
 
-Report the result first, then what was created, changed and reused, anything unverified, and whether the work is staged or published. Webflow saves automatically, so saving is the baseline, not a step.
+Report the result first, then what was created, changed and reused, anything unverified, and whether the work is staged or published.
 
 ## Build rules
 
@@ -82,5 +71,4 @@ Report the result first, then what was created, changed and reused, anything unv
 - Text goes on a Text Block, Heading, Paragraph or Text Link, never a Div Block, even when it's bound to the CMS. When copying an existing row, check its element types first, and fix any Divs holding text.
 - Keep component instances linked, and fix the definition.
 - Use Webflow Label elements only for form controls.
-- Leave Navigator labels unset unless the user asks.
 - Fix one element's stacking locally, leaving global utilities unchanged.
