@@ -29,7 +29,7 @@ Store it at `<skill-name>/SKILL.md`, with a lowercase kebab-case name that uses 
 The body holds what no single component description can:
 
 - **Ladder:** the order to try, from component to existing class to combo class to asking the user.
-- **Index:** one row per component, mapping the need to the component. "A heading or title" maps to `Heading`.
+- **Index:** one row per component, mapping the need to the component. "A heading or title" maps to `Atom / Heading`.
 - **Composition:** which components go inside which slots, and the order of pieces in a standard section.
 - **Edges:** the needs with no component, and what to build for each.
 

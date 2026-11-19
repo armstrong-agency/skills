@@ -43,7 +43,7 @@ Build each section in brief order on the brief's destination, the sandbox page b
 4. New class from the invent list
 5. Custom code, for what Webflow cannot express
 
-Rung 1 covers atoms. Before placing a heading, button, link, icon or spacer, search the site's components for it and place an instance of the match, so a `Heading` component wins over a new heading class.
+Rung 1 covers atoms. Before placing a heading, button, link, icon or spacer, search the site's components for it and place an instance of the match, so an `Atom / Heading` component wins over a new heading class.
 
 For a prototype, stop at rung 3 and note what the system could not do. When a section uses Finsweet Attributes List (`fs-list-*`), read [finsweet.md](references/finsweet.md). Before changing a shared component, follow [shared-components.md](references/shared-components.md). Create and adjust interactions and settings freely on the sandbox page, checking them in Preview.
 

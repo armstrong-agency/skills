@@ -6,10 +6,29 @@ Follow this when creating a component, converting a section to one, or auditing 
 
 ## Name
 
-Follow the grammar file's component naming and the names already on the site. Within those:
+A site with a consistent convention of its own keeps it. Otherwise name every component `Tier / Thing`, and place it in the group named for its tier in the plural: `Atom / Heading` sits in Atoms.
 
-- **Component:** the plain word a builder asks for, such as `Heading`, `Button` or `Pricing Card`. One responsibility gets one component.
-- **Group:** the tier, so the group says how the component is used. Atoms are single elements such as a heading, button, icon or spacer. Blocks are built from atoms, such as a card or form field. Sections are full page sections. Global holds the nav, footer and styles. Use the site's own group names where it has them.
+| Tier | Holds | Example |
+| --- | --- | --- |
+| `Atom` | Any piece used inside a section or another component | `Atom / Heading`, `Atom / Button`, `Atom / FAQ Item` |
+| `Card` | A repeated content unit for a grid or list | `Card / Customer` |
+| `Layout` | An arrangement of slots with no content of its own | `Layout / Media Grid` |
+| `Section` | A full page section | `Section / Hero` |
+| `Nav`, `Form` | Navigation pieces and forms | `Nav / Platform`, `Form / Demo` |
+| `Global` | One-per-site pieces | `Global / Footer`, `Global / Styles` |
+| `Utility` | Structural helpers | `Utility / Spacer` |
+
+Two separators extend a name, and each has one meaning:
+
+- **Slash nests.** `Section / Hero / Form` is the form inside the hero, the way a slash makes an inner folder.
+- **Dash modifies.** `Section / Hero - Form` is the hero in its form version, a sibling of `Section / Hero`. Use a dash name when the structure differs, and a variant on one component when only the look differs.
+
+A bracket tag at the end marks behavior: `[Global]` for content shared by every instance, `[CMS]` for a CMS-bound version, `[Flexible]` for a section assembled from slots.
+
+Rename a retired component `Legacy / …` and move it out of its group until its last instance is gone.
+
+Inside a component:
+
 - **Variant:** the Style Guide's word for the look, such as `Primary` or `H2`.
 - **Prop:** what the control changes on the page, such as `Heading tag`, `Style` or `Show icon`. Give related props one prop group.
 
@@ -25,9 +44,9 @@ The component already holds its prop list, defaults and classes, so the descript
 
 | Component | Description |
 | --- | --- |
-| `Heading` | Every heading, title and headline. Heading tag sets the document level and Style sets the size, so choose each on its own. Body copy uses Rich Text. |
-| `Button` | Every button and call-to-action link. Style picks primary, secondary or text. A link inside a sentence uses Text Link. |
-| `Spacer` | Vertical space between blocks inside a section. Size picks the step from the spacing scale. Space above and below a whole section comes from Section. |
+| `Atom / Heading` | Every heading, title and headline. Heading tag sets the document level and Style sets the size, so choose each on its own. Body copy uses Rich Text. |
+| `Atom / Button` | Every button and call-to-action link. Style picks primary, secondary or text. A link inside a sentence uses Text Link. |
+| `Utility / Spacer` | Vertical space between blocks inside a section. Size picks the step from the spacing scale. Space above and below a whole section comes from the section component. |
 
 Give each prop a tooltip of one line saying which value to choose and when. For `Heading tag`: "Document outline level, one H1 per page. Style sets the size."
 
