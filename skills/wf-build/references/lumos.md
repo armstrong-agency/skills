@@ -51,6 +51,6 @@ Component CSS goes in an embed as the first child of the component's `_wrap`, an
 
 ## Docs
 
-- [Docs](https://lumos.timothyricks.com/)
-- [Cloneable starter and style guide](https://webflow.com/made-in-webflow/website/lumos-v2-beta)
+- [Docs and style guide](https://timothyricks.notion.site/Lumos-Framework-6d1139068f7442d49494ec3b581cf09d)
+- [Cloneable starter](https://webflow.com/made-in-webflow/website/lumos-v2-beta)
 - [Lumos skill](https://github.com/lumosframework/skill)

@@ -11,7 +11,7 @@ Two things must hold when you finish:
 
 ## 1. Read what exists
 
-Search the site's instructions and read each one. A missing-scope error means the connection was authorized before instructions existed, so reauthorize it with `wf-mcp-setup`. Instructions installed from a Shared Library change on the source site.
+Search the site's instructions and read each one. Instructions installed from a Shared Library change on the source site.
 
 Done when you can list every rule and skill on the site, and whether each is on.
 

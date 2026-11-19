@@ -125,7 +125,6 @@ Name interactions `Element [Action State]`, with State only when it adds context
 - [Style guide](https://client-first.webflow.io/)
 - [Cloneable starter](https://webflow.com/made-in-webflow/website/client-first-cloneable)
 - [Intro](https://finsweet.com/client-first/docs/intro)
-- [What's new in v3](https://finsweet.com/client-first/docs/whats-new)
 - [Core structure](https://finsweet.com/client-first/docs/core-structure-strategy)
 - [Variables](https://finsweet.com/client-first/docs/variables)
 - [Spacing](https://finsweet.com/client-first/docs/spacing-strategy)
