@@ -27,10 +27,19 @@ A bracket tag at the end marks behavior: `[Global]` for content shared by every 
 
 Rename a retired component `Legacy / …` and move it out of its group until its last instance is gone.
 
-Inside a component:
+Name a variant with the Style Guide's word for the look, such as `Primary` or `H2`.
 
-- **Variant:** the Style Guide's word for the look, such as `Primary` or `H2`.
-- **Prop:** what the control changes on the page, such as `Heading tag`, `Style` or `Show icon`. Give related props one prop group.
+## Properties
+
+A property is the control an editor or agent uses on an instance. Expose what changes from one instance to the next, and keep the rest fixed in the definition.
+
+- **Name:** what the control changes on the page, such as `Heading tag`, `Style` or `Show icon`. Give related properties one group.
+- **Content:** a text, rich text, image, link or video property for each piece that differs per instance.
+- **Variant:** a different look on the same structure.
+- **Visibility:** an optional part gets an on/off property bound to its visibility, so each instance shows or hides it with one switch. Conditional visibility is a different tool that follows CMS or option values. The API cannot read or set it, so the user sets it in Designer.
+- **Slot:** content the component cannot predict.
+
+The MCP creates some property types and only reads others. Before the brief promises a property, check the types the property tool offers in this session, and list the rest for the user to add in Designer. Known property and binding failures are under Attributes and props in [common-issues.md](common-issues.md).
 
 ## Describe
 
@@ -48,7 +57,7 @@ The component already holds its prop list, defaults and classes, so the descript
 | `Atom / Button` | Every button and call-to-action link. Style picks primary, secondary or text. A link inside a sentence uses Text Link. |
 | `Utility / Spacer` | Vertical space between blocks inside a section. Size picks the step from the spacing scale. Space above and below a whole section comes from the section component. |
 
-Give each prop a tooltip of one line saying which value to choose and when. For `Heading tag`: "Document outline level, one H1 per page. Style sets the size."
+Give each property a tooltip of one line saying which value to choose and when. For `Heading tag`: "Document outline level, one H1 per page. Style sets the size."
 
 ## Audit a library
 

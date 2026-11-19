@@ -20,7 +20,7 @@ You also need the Webflow MCP server connected to your project. `wf-mcp-setup` w
 | --- | --- | --- |
 | `wf-mcp-setup` | Connects a project-scoped Webflow MCP server, so each project stays pinned to its own workspace. | No |
 | `wf-folder-setup` | Sets up a working folder for one site, or audits an existing one: an `AGENTS.md` holding only what the site cannot, the MCP pin, publishing levels for agents, and a backup of the site's custom code. | No |
-| `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds the page one section at a time on a sandbox page, reviews each section for completeness and design fidelity, then walks you through them one by one, and sets up a Style Guide when the site has none. It also names and describes components so agents find them, and writes the site's agent instructions for using them. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro) and [Mast](https://www.nocodesupply.co/mast/docs) ship inside it. | Yes, after review |
+| `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds the page one section at a time on a sandbox page, reviews each section for completeness and design fidelity, then walks you through them one by one, and sets up a Style Guide when the site has none. It also names and describes components so agents find them, and writes the site's agent instructions for using them. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro), [Mast](https://www.nocodesupply.co/mast/docs) and [Lumos](https://lumos.timothyricks.com/) ship inside it. Start it by name with `/wf-build`. | Yes, after review |
 
 ## Workflow
 

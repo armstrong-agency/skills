@@ -11,7 +11,8 @@ Known Webflow MCP and Designer behavior that costs time if you don't expect it.
 ## Elements and nesting
 
 - The MCP reports Div Blocks and Text Blocks both as `Block`, so readback can't tell them apart. Choose the right type when building, and confirm in Designer.
-- **Text Link** (`Link`) generally cannot nest Div / HtmlEmbed children. For a clickable row with an icon, chevron, or other nested block, use a **Link Block**.
+- **Text Link** (`Link`) generally cannot nest Div / HtmlEmbed children. For a clickable row with an icon, chevron, or other nested block, use a **Link Block**, and place Image, icon and embed nodes as siblings of text nodes.
+- Inserting a component instance can fail at the target position. Insert it into a parent and reorder, and keep the instance linked.
 - The MCP can't create a native **Navbar** (`w-nav`), even with the Designer bridge open. Dropdown, Tabs, and Slider work. Navbar markup sent as HTML lands as plain Divs and Links with the `w-` classes dropped, so there is no collapse or menu button. Ask the user to add a Navbar in Designer, then build inside it.
 - Native Tabs can fail to take a new tab. Add a fresh tab item and restyle it, or ask the user for help.
 

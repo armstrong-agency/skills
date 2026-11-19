@@ -1,6 +1,7 @@
 ---
 name: wf-build
-description: Build pages, sections, components, interactions and the Style Guide on a Webflow site over the MCP. Use when building, changing, planning, prototyping, naming classes or components, or writing a site's agent instructions in Webflow.
+description: Build pages, sections, components, interactions and the Style Guide on a Webflow site over the MCP.
+disable-model-invocation: true
 ---
 
 # Webflow Build
@@ -45,7 +46,7 @@ Build each section in brief order on the brief's destination, the sandbox page b
 
 Work component-forward. Before placing a heading, button, link, icon or spacer, search the site's components and use the one whose job matches, so an `Atom / Heading` component wins over a new heading class. Judge the fit: a component that is close but wrong for the job stays unused, and the gap goes in the report.
 
-For a prototype, stop at rung 3 and note what the system could not do. When a section uses Finsweet Attributes List (`fs-list-*`), read [finsweet.md](references/finsweet.md). Before changing a shared component, follow [shared-components.md](references/shared-components.md). Create and adjust interactions and settings freely on the sandbox page, checking them in Preview.
+For a prototype, stop at rung 3 and note what the system could not do. When a section uses or needs Finsweet Attributes (`fs-*`), for filtering, CMS loading or other behavior Webflow lacks natively, read [finsweet-attributes.md](references/finsweet-attributes.md). Before changing a shared component, follow [shared-components.md](references/shared-components.md). Create and adjust interactions and settings freely on the sandbox page, checking them in Preview.
 
 Done when every section in the brief exists on the page.
 
@@ -80,8 +81,7 @@ Report the result first, then what was created, changed and reused, anything unv
 - Style through Designer's Style panel fields or the MCP properties that map to them.
 - Keep custom code to a minimum: behavior Webflow cannot express, and CSS only for a value Designer cannot set. Put custom CSS where the grammar file says, and with no rule there, ask the user where it goes.
 - Text goes on a Text Block, Heading, Paragraph or Text Link, never a Div Block, even when it's bound to the CMS. When copying an existing row, check its element types first, and fix any Divs holding text.
-- Place Image, icon and embed nodes as siblings of text nodes.
-- Keep component instances linked: fix the definition, or insert into a parent and reorder when an insert fails.
+- Keep component instances linked, and fix the definition.
 - Use Webflow Label elements only for form controls.
 - Leave Navigator labels unset unless the user asks.
 - Fix one element's stacking locally, leaving global utilities unchanged.
