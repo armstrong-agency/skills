@@ -7,7 +7,7 @@ description: Score a Webflow site out of 25 for how ready it is for AI agents to
 
 An agent builds on whatever a site already has. A site with clear building blocks gets pages that match, and a site with a mess gets a bigger mess, faster. The **scorecard** rates five categories from 1 to 5, for a total out of 25, so the user knows which one they have before an agent builds anything.
 
-This skill reads the site and changes nothing: no elements, no styles, no CMS items, no publishing.
+This skill reads the site and changes nothing on it: no elements, no styles, no CMS items, no publishing. The only thing it writes is its own report, in the working folder.
 
 ## 1. Check context
 
@@ -15,6 +15,7 @@ Done when you can state:
 
 - **Connection:** the MCP reaches the intended workspace, using the tool names this session exposes. If it is missing, run `wf-mcp-setup`.
 - **Target:** the site, confirmed by the user from the name and ID you read back.
+- **Working folder:** present or missing. A folder from `wf-folder-setup` gives the report a place to live, so offer to run that skill first when it is missing. Carry on without one when the user declines.
 
 ## 2. Read the site
 
@@ -61,7 +62,7 @@ Lead with the total and what it means:
 
 | Total | Meaning | Next step |
 | --- | --- | --- |
-| 21 to 25 | Ready. | Run `wf-folder-setup`, then build one page on a draft page with `wf-build`. |
+| 21 to 25 | Ready. | Build one page on a draft page with `wf-build`. |
 | 14 to 20 | Fix a few things first. | Fix the lowest category before an agent builds anything new. Start with components when they score lowest. |
 | 5 to 13 | Not yet. | Restructure the site first. An agent will multiply the problems the team already works around. |
 
@@ -73,3 +74,5 @@ Then give, in this order:
 4. Anything you could not read, and what you sampled.
 
 Label a score as a guess when the evidence for it was thin.
+
+When there is a working folder, save the report there as `scorecard/YYYY-MM-DD.md` and tell the user the path. A later run reads the previous report first and states what changed.
