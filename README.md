@@ -22,6 +22,10 @@ You also need the Webflow MCP server connected to your project. `wf-mcp-setup` w
 | `wf-folder-setup` | Sets up a working folder for one site, or audits an existing one: an `AGENTS.md` holding only what the site cannot, the MCP pin, publishing levels for agents, and a backup of the site's custom code. | No |
 | `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds the page one section at a time on a sandbox page, reviews each section for completeness and design fidelity, then walks you through them one by one, and sets up a Style Guide when the site has none. It also names and describes components so agents find them, and writes the site's agent instructions for using them. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro), [Mast](https://www.nocodesupply.co/mast/docs) and [Lumos](https://lumos.timothyricks.com/) ship inside it. | Yes, after review |
 
+## Starter kit
+
+Not using an agent skill yet? [`starter-kit/`](starter-kit/README.md) holds the by-hand versions: a site scorecard, a copy-paste `AGENTS.md`, a Webflow MCP setup cheatsheet and a course index.
+
 ## Workflow
 
 `wf-build` reads the site, agrees a brief with you, builds the whole page, checks each section against the design itself, then stops for your approval of each section. The Webflow site is the record: nothing depends on a separate context file, and no new class is created until you approve it.
