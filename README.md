@@ -20,11 +20,15 @@ You also need the Webflow MCP server connected to your project. `wf-mcp-setup` w
 | --- | --- | --- |
 | `wf-mcp-setup` | Connects a project-scoped Webflow MCP server, so each project stays pinned to its own workspace. | No |
 | `wf-folder-setup` | Sets up a working folder for one site, or audits an existing one: an `AGENTS.md` holding only what the site cannot, the MCP pin, publishing levels for agents, and a backup of the site's custom code. | No |
+| `wf-scorecard` | Scores a site out of 25 for how ready it is for an agent to build on, across class naming, CMS structure, component reuse, editing safety and custom code, with evidence read from the site. | No. It saves its report in the working folder. |
 | `wf-build` | Takes a job from context check to reviewed sections: agrees a brief, builds the page one section at a time on a sandbox page, reviews each section for completeness and design fidelity, then walks you through them one by one, and sets up a Style Guide when the site has none. It also names and describes components so agents find them, and writes the site's agent instructions for using them. Grammar files for [Client-First](https://finsweet.com/client-first/docs/intro), [Mast](https://www.nocodesupply.co/mast/docs) and [Lumos](https://lumos.timothyricks.com/) ship inside it. | Yes, after review |
 
-## Starter kit
+## Where to start
 
-Not using an agent skill yet? [`starter-kit/`](starter-kit/README.md) holds the by-hand versions: a site scorecard, a copy-paste `AGENTS.md`, a Webflow MCP setup cheatsheet and a course index.
+1. `wf-mcp-setup` connects your agent to one site.
+2. `wf-folder-setup` writes the rules your agent reads at the start of every session, and gives the next step a place to keep its report.
+3. `wf-scorecard` tells you whether the site is ready, and what to fix first.
+4. `wf-build` builds the first page on a draft page, one section at a time.
 
 ## Workflow
 
